@@ -1,15 +1,11 @@
 package com.espark.adarsh.persistence.entites.impl;
 
-import java.util.Date;
-import java.util.HashSet;
-
-import com.espark.adarsh.bean.TaskCreateForm;
-import com.espark.adarsh.bean.UserCreateForm;
-import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.espark.adarsh.bean.IssueCreateForm;
+import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
 
 @Entity
 @Table(name = "issue_main")
@@ -47,6 +43,22 @@ public final class Task extends AbstractEntity<Long> {
 
     @Column(nullable = false, length = 100)
     private String issue_type;
+    
+    public String gettaskname() {
+        return issue_name;
+    }
+
+    public void settaskname(String issue_name) {
+        this.issue_name = issue_name;
+    }
+
+    public String getIssue_status() {
+		return issue_status;
+	}
+
+	public void setIssue_status(String issue_status) {
+		this.issue_status = issue_status;
+	}
     
     public String getIssue_report_date() {
 		return issue_report_date;
@@ -151,36 +163,20 @@ public final class Task extends AbstractEntity<Long> {
         this.issue_type = task.getIssue_type();
     }
     
-    public Task(final TaskCreateForm taskCreateForm){
+    public Task(final IssueCreateForm issueCreateForm){
         super(Task.class);
-        this.issue_name = taskCreateForm.getIssue_name();
-        this.issue_status = taskCreateForm.getIssue_status();
-        this.issue_report_date = taskCreateForm.getIssue_report_date();
-        this.issue_update_date = taskCreateForm.getIssue_update_date();
-        this.issue_heading = taskCreateForm.getIssue_heading();
-        this.issue_description = taskCreateForm.getIssue_description();
-        this.issue_linked_with = taskCreateForm.getIssue_linked_with();
-        this.issue_comments = taskCreateForm.getIssue_comments();
-        this.issue_others = taskCreateForm.getIssue_others();
-        this.issue_closed = taskCreateForm.getIssue_closed();
-        this.issue_type = taskCreateForm.getIssue_type();
+        this.issue_name = issueCreateForm.getIssue_name();
+        this.issue_status = issueCreateForm.getIssue_status();
+        this.issue_report_date = issueCreateForm.getIssue_report_date();
+        this.issue_update_date = issueCreateForm.getIssue_update_date();
+        this.issue_heading = issueCreateForm.getIssue_heading();
+        this.issue_description = issueCreateForm.getIssue_description();
+        this.issue_linked_with = issueCreateForm.getIssue_linked_with();
+        this.issue_comments = issueCreateForm.getIssue_comments();
+        this.issue_others = issueCreateForm.getIssue_others();
+        this.issue_closed = issueCreateForm.getIssue_closed();
+        this.issue_type = issueCreateForm.getIssue_type();
     }
-
-    public String gettaskname() {
-        return issue_name;
-    }
-
-    public void settaskname(String issue_name) {
-        this.issue_name = issue_name;
-    }
-
-    public String getIssue_status() {
-		return issue_status;
-	}
-
-	public void setIssue_status(String issue_status) {
-		this.issue_status = issue_status;
-	}
 
     @Override
     public String toString() {

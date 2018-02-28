@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.espark.adarsh.bean.TaskCreateForm;
+import com.espark.adarsh.bean.IssueCreateForm;
 import com.mysql.jdbc.Statement;
 class JDBCDemo9
 {
@@ -17,7 +17,7 @@ class JDBCDemo9
 		Scanner sc = null;
 		ResultSet rs = null;
 		PreparedStatement pst = null;
-		TaskCreateForm tc = new TaskCreateForm();
+		IssueCreateForm tc = new IssueCreateForm();
 		try
 		{
 			sc = new Scanner(System.in);

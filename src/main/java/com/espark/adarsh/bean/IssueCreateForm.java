@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
-public class TaskCreateForm {
+public class IssueCreateForm {
 
 	@NotEmpty
 	private String issue_name = "test3";

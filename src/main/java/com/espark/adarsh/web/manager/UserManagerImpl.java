@@ -1,11 +1,6 @@
 package com.espark.adarsh.web.manager;
 
-import com.espark.adarsh.persistence.entites.impl.Task;
-import com.espark.adarsh.persistence.entites.impl.User;
-import com.espark.adarsh.persistence.entites.impl.UserRole;
-import com.espark.adarsh.persistence.repositories.RoleRepository;
-import com.espark.adarsh.persistence.repositories.TaskRepository;
-import com.espark.adarsh.persistence.repositories.UserRepository;
+import java.util.Collection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import com.espark.adarsh.persistence.entites.impl.User;
+import com.espark.adarsh.persistence.entites.impl.UserRole;
+import com.espark.adarsh.persistence.repositories.RoleRepository;
+import com.espark.adarsh.persistence.repositories.UserRepository;
 
 @Service
 final public class UserManagerImpl
@@ -86,55 +84,5 @@ final public class UserManagerImpl
 
     public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
-    }
-    
-    @Override
-    public void refreshTask(Task task) {
-        taskRepository.refreshTask(task);
-    }
-
-    @Transactional
-    public Boolean saveTask(Task task) {
-        taskRepository.saveTask(task);
-        return null;
-    }
-
-    @Transactional
-    public Boolean updateTask(Task task) {
-    	taskRepository.updateTask(task);
-        return null;
-    }
-
-    @Transactional
-    public Boolean deleteTask(Task task) {
-    	taskRepository.deleteTask(task);
-        return null;
-    }
-
-    public Task getTask(final Task task) {
-        return  taskRepository.getTask(task);
-    }
-
-    @Override
-    public Collection<Task> getAllTask() {
-        return taskRepository.getAllTask();
-    }
-
-    @Override
-    public Task getTaskById(Task task) {
-        return taskRepository.getTaskById(task);
-    }
-
-    @Override
-    public Task getTaskByName(Task task) {
-        return taskRepository.getTaskByName(task);
-    }
-
-    @Qualifier("taskRepositoryImpl")
-    @Autowired
-    private TaskRepository taskRepository;
-
-    public void setTaskRepository(final TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
     }
 }

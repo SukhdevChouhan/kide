@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    
+    <script>
+    	$(document).ready(function (){
+    		$(".task-row").click(function(){
+    			window.location=$(this).data("url");
+    		});
+    	});
+    </script>
 </head>
 <body>
 <nav role="navigation">
@@ -21,7 +29,6 @@
 <div class="container">
     <h2>Task Information </h2>
     <p>task data for analysis </p>
-     <form>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -39,7 +46,7 @@
         </thead>
         <tbody>
         <#list tasks as task>
-        <tr data-url="some_url1">
+        <tr class="task-row" data-url="/task/edit?taskname=${task.taskname}">
             <td>${task.taskname}</td>
             <td>${task.issue_report_date}</td>
             <td>${task.issue_update_date}</td>
@@ -50,21 +57,11 @@
             <td>${task.issue_closed}</td>  
             <td>${task.issue_type}</td>
             <td>${task.issue_others}</td>
-            <td><button onclick="editTask()">Edit</button></td>
-			
-			<script>
-			function editTask() {
-    		<a href="taskEdit.html">Hey</a>
-}
-</script>
-
-<p id="demo"></p>
         </tr>
         </#list>
         </tbody>
     </table>
-    <button type="submit">Save</button>
-    </form>
 </div>
+<div id="navigate"></div>
 </body>
 </html>
