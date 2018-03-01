@@ -5,12 +5,6 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <title>Create a new user</title>
 </head>
 <body>
 <nav role="navigation">
@@ -21,7 +15,6 @@
 
 <div class="container">
     <div class="jumbotron">
-        <center>   <h3>USER REGISTRATION FORM - You Rembember Ripple Effect</h3></center>
     </div>
     <form role="form" name="form" action="" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

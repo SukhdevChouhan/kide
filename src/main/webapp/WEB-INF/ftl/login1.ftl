@@ -3,6 +3,20 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of Bootstrap 3 Vertical Form Layout</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .bs-example {
+            margin: 20px;
+        }
+    </style>
+    <title>Log in</title>
+</head>
 <body>
 
 
@@ -10,6 +24,7 @@
 
 
     <div class="alert alert-info">
+        <center><h1>KIDA LOG-IN go4 Ripple Effect</h1></center>
     </div>
 
     <div class="container">
@@ -35,12 +50,12 @@
                 <div class="form-group">
                     <label for="username">UserName</label>
                     <input type="username" class="form-control" name="username" id="username" required autofocus
-                           placeholder="username" value="sukhdev"/>
+                           placeholder="username"/>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required class="form-control"
-                           placeholder="Password" value="sukhdev"/>
+                           placeholder="Password"/>
                 </div
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember-me" id="remember-me"> Remember me</label>

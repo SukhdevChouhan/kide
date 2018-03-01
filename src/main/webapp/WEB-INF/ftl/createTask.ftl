@@ -5,12 +5,6 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <title>Create a new user</title>
 </head>
 <body>
 <nav role="navigation">
@@ -81,14 +75,5 @@
         <button type="submit">Save</button>
     </form>
 </div>
-<@spring.bind "form" />
-<#if spring.status.error>
-<ul>
-    <#list spring.status.errorMessages as error>
-        <li>${error}</li>
-    </#list>
-</ul>
-</#if>
-
 </body>
 </html>

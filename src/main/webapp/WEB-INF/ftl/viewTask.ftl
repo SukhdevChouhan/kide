@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>List of Tasks</title>
+    <title></title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <script src="/js/jquery.min.js"></script>
@@ -46,8 +46,8 @@
         </thead>
         <tbody>
         <#list tasks as task>
-        <tr class="task-row" data-url="/task/edit?taskname=${task.taskname}">
-            <td>${task.taskname}</td>
+        <tr class="task-row" data-url="/task/edit?taskname=${task.issue_name}">
+            <td>${task.issue_name}</td>
             <td>${task.issue_report_date}</td>
             <td>${task.issue_update_date}</td>
             <td>${task.issue_heading}</td>

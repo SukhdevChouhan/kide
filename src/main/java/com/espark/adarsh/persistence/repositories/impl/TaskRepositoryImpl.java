@@ -39,7 +39,7 @@ public class TaskRepositoryImpl extends AbstractRepository<Task>
     @Override
     @Transactional
     public Task getTaskByName(Task task) {
-        return (Task) super.getByColumnName("issue_name",task.gettaskname());
+        return (Task) super.getByColumnName("issue_name",task.getIssue_name());
     }
 
     @Override

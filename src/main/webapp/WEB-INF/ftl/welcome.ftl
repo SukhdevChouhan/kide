@@ -4,14 +4,6 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Home page</title>
-    <title>SPRING BOOT TOKEN AUTHENTICATION HOME PAGE </title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
@@ -41,21 +33,16 @@
         <div class="container">
             <div class="jumbotron">
                 <div class="alert alert-info">
-                    <center><h3>WELCOME TO THE APPLICATION</h3></center>
                 </div>
             </div>
 
 
             <div class="alert alert-info">
-                <p style="font-size: x-large">
-                    Sample application with spring boot (security for custom token authentication for rest web services)
-                </p>
+              
             </div>
 
         </div>
     </div>
-   <!-- <iframe src="http://adarshkumarsingh83.blogspot.in/" seamless width="100%" height="100%"> -->
-    </iframe>
 </div>
 </body>
 </html>

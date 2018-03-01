@@ -10,8 +10,8 @@ import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
 @Entity
 @Table(name = "issue_main")
 public final class Task extends AbstractEntity<Long> {
-
-	 @Column(unique = true, length = 24, nullable = false)
+	
+	@Column(unique = true, length = 24, nullable = false)
     private String issue_name;
     
     @Column(nullable = false, length = 100)
@@ -44,13 +44,13 @@ public final class Task extends AbstractEntity<Long> {
     @Column(nullable = false, length = 100)
     private String issue_type;
     
-    public String gettaskname() {
-        return issue_name;
-    }
+	public String getIssue_name() {
+		return issue_name;
+	}
 
-    public void settaskname(String issue_name) {
-        this.issue_name = issue_name;
-    }
+	public void setIssue_name(String issue_name) {
+		this.issue_name = issue_name;
+	}
 
     public String getIssue_status() {
 		return issue_status;
@@ -140,7 +140,7 @@ public final class Task extends AbstractEntity<Long> {
 	public Task(Long id) {
         super(Task.class);
         super.setId(id);
-        this.settaskname("");
+        this.setIssue_name("");
     }
 	
     public Task(String issue_name) {
@@ -150,7 +150,7 @@ public final class Task extends AbstractEntity<Long> {
 
     public Task(Task task) {
         super(Task.class);
-        this.issue_name = task.gettaskname();
+        this.issue_name = task.getIssue_name();
         this.issue_status = task.getIssue_status();
         this.issue_report_date = task.getIssue_report_date();
         this.issue_update_date = task.getIssue_update_date();
@@ -165,6 +165,8 @@ public final class Task extends AbstractEntity<Long> {
     
     public Task(final IssueCreateForm issueCreateForm){
         super(Task.class);
+        if(issueCreateForm.getId() != null)
+        	this.setId(issueCreateForm.getId());
         this.issue_name = issueCreateForm.getIssue_name();
         this.issue_status = issueCreateForm.getIssue_status();
         this.issue_report_date = issueCreateForm.getIssue_report_date();

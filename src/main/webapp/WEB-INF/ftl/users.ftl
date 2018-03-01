@@ -3,12 +3,6 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>List of Users</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav role="navigation">

@@ -5,12 +5,6 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <title>Edit task</title>
 </head>
 <body>
 <nav role="navigation">
@@ -21,13 +15,13 @@
 
 <div class="container">
     <div class="jumbotron">
-        <center>   <h3>TASK EDIT FORM</h3></center>
     </div>
-    <form role="form" name="form" action="" method="post">
+    <form role="form" name="task" action="" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input type="hidden" name="id" value="${task.id}"/>
         <div>
             <label for="issue_name">Issue Name</label>
-            <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="${task.taskname}"/>
+            <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="${task.issue_name}"/>
         </div>
         <div>
             <label for="issue_status">Issue Status</label>

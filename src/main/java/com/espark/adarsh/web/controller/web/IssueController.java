@@ -20,7 +20,7 @@ import com.espark.adarsh.persistence.entites.impl.UserRole;
 import com.espark.adarsh.web.manager.IssueManager;
 import com.espark.adarsh.web.manager.UserManager;
 
-//@WebMvcController
+@WebMvcController
 public class IssueController {
 	Task task = null;
 	private static final Logger LOGGER = LoggerFactory
@@ -42,8 +42,7 @@ public class IssueController {
 		@RequestMapping(value = "/task/create", method = RequestMethod.GET)
 		public ModelAndView getTaskCreatePage() {
 			LOGGER.debug("Getting task create form");
-			System.out.println("Hi**************I am creating task********************");
-			return new ModelAndView("createTask", "form", new IssueCreateForm());
+			return new ModelAndView("createTask", "task", new IssueCreateForm());
 		}
 
 		// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -61,7 +60,6 @@ public class IssueController {
 				final UserRole userRole = this.userManager.getUserRole(form
 						.getIssue_name());
 				form.setRole(userRole);
-				System.out.println("***1**userRole*******"+userRole);
 				this.issueManager.saveTask(new Task(form));
 			} catch (DataIntegrityViolationException e) {
 				// probably email already exists - very rare case when multiple
@@ -75,15 +73,12 @@ public class IssueController {
 				return "createTask";
 			}
 			// ok, redirect
-			return "redirect:/users";
+			return "redirect:/tasks";
 		}
-		//***********************Task Edit ***********************************//
+		//***********************Task Edit or Update ***********************************//
 		@RequestMapping(value = "/task/edit", method = RequestMethod.GET)
 		public ModelAndView getTaskEditPage(@RequestParam String taskname) {
-			System.out.println("Hi******1********am editing task********************");
-			LOGGER.debug("Getting task create form");
 			Task a  = new Task(taskname);
-			System.out.println("******a***********"+a);
 			return new ModelAndView("taskEdit", "task", issueManager.getTaskByName(a));
 		}
 		// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -100,11 +95,12 @@ public class IssueController {
 					return "taskEditFail";
 				}
 				try {
-//					final UserRole userRole = this.userManager.getUserRole(form
-//							.getIssue_name());
-//					form.setRole(userRole);
-//					System.out.println("*****userRole*******"+userRole);
-					boolean flag = this.issueManager.updateTask(new Task(form));
+					final UserRole userRole = this.userManager.getUserRole(form
+							.getIssue_name());
+					form.setRole(userRole);
+					System.out.println("*****userRole*******"+userRole);
+					Task task = new Task(form);
+					this.issueManager.updateTask(task);
 				} catch (DataIntegrityViolationException e) {
 					// probably email already exists - very rare case when multiple
 					// admins are adding same user
@@ -118,7 +114,7 @@ public class IssueController {
 					return "taskEditFail";
 				}
 				// ok, redirect
-				return "redirect:/users";
+				return "redirect:/tasks";
 			}
 		//***********************Task Edit ***********************************//	
 		/*@RequestMapping(value = "/task/edit", method = RequestMethod.GET)
