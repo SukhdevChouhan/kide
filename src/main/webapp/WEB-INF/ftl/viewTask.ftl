@@ -23,7 +23,9 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/task/create">Create Task</a></li>
-        </ul>
+         <li><a href="/task/deleteIssue">Delete Task</a></li>
+    </ul>
+    
 </nav>
 
 <div class="container">
