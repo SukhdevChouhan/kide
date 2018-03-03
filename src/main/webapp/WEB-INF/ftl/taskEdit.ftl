@@ -18,7 +18,7 @@
     </div>
     <form role="form" name="task" action="" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="hidden" name="id" value="${task.id}"/>
+    <input type="number" type="hidden" name="id" value="${task.id}"/>
         <div>
             <label for="issue_name">Issue Name</label>
             <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="${task.issue_name}"/>
