@@ -35,12 +35,12 @@
                 <div class="form-group">
                     <label for="username">UserName</label>
                     <input type="username" class="form-control" name="username" id="username" required autofocus
-                           placeholder="username" value="sukhdev"/>
+                           placeholder="username" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" required class="form-control"
-                           placeholder="Password" value="sukhdev"/>
+                           placeholder="Password" />
                 </div
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember-me" id="remember-me"> Remember me</label>
