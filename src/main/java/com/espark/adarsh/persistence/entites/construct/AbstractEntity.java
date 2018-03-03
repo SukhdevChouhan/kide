@@ -10,7 +10,7 @@ public abstract class AbstractEntity<E extends Serializable>
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = true, nullable = false, unique = true, updatable = true)
-    private E id;
+	private E id;
 
     protected AbstractEntity(Class<? extends Entity> entity) {
         final Class<? extends Entity> entityObject = entity;

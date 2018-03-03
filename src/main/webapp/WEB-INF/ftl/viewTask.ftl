@@ -23,7 +23,6 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/task/create">Create Task</a></li>
-         <li><a href="/task/deleteIssue">Delete Task</a></li>
     </ul>
     
 </nav>
@@ -34,6 +33,7 @@
     <table class="table table-hover">
         <thead>
         <tr>
+        	<th>Task Id</th>
             <th>Task Name</th>
             <th>Report Date</th>
             <th>Update Date</th>
@@ -44,11 +44,13 @@
             <th>Closed Date</th>
             <th>Issue Type</th>
             <th>Other details</th>
+            <th>Comments</th>
         </tr>
         </thead>
         <tbody>
         <#list tasks as task>
         <tr class="task-row" data-url="/task/edit?taskname=${task.issue_name}">
+        	<td>${task.id}</td>
             <td>${task.issue_name}</td>
             <td>${task.issue_report_date}</td>
             <td>${task.issue_update_date}</td>
@@ -59,6 +61,7 @@
             <td>${task.issue_closed}</td>  
             <td>${task.issue_type}</td>
             <td>${task.issue_others}</td>
+            <td>${task.issue_comments}</td>
         </tr>
         </#list>
         </tbody>

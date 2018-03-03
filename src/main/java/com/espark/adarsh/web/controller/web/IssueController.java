@@ -86,7 +86,7 @@ public class IssueController {
 			public String handleTaskEditForm(
 					@Valid @ModelAttribute("task") IssueCreateForm form,
 					BindingResult bindingResult) {
-				System.out.println("******b***********");
+				System.out.println("******b***********"+form);
 				LOGGER.debug("Processing task edit form={}, bindingResult={}", form,
 						bindingResult);
 				if (bindingResult.hasErrors()) {
@@ -116,50 +116,5 @@ public class IssueController {
 				// ok, redirect
 				return "redirect:/tasks";
 			}
-		//***********************Task Edit ***********************************//	
-		/*@RequestMapping(value = "/task/edit", method = RequestMethod.GET)
-		public ModelAndView getTaskEditPage(@RequestParam String taskname) {
-			System.out.println("Hi******1********am editing task********************");
-			LOGGER.debug("Getting task create form");
-			Task a  = new Task(taskname);
-			System.out.println("*****************"+a);
-			return new ModelAndView("taskEdit", "task", issueManager.getTaskByName(a));
-		}
-
-		// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-				@RequestMapping(value = "/task/edit", method = RequestMethod.POST)
-				public String handleTaskEditForm(
-						@Valid @ModelAttribute("formEdit") UserCreateForm form,
-						BindingResult bindingResult) {
-					LOGGER.debug("Processing task edit form={}, bindingResult={}", form,
-							bindingResult);
-					System.out.println("Hi*********2*****am editing task********************");
-					if (bindingResult.hasErrors()) {
-						System.out.println("Hi***************am editing task*****in error block***************");
-						// failed validation
-						return "editTask";
-					}
-					try {
-						System.out.println("Hi***************am editing task*****in try block***************");
-						final UserRole userRole = this.userManager.getUserRole(form.getUserName());
-						form.setRole(userRole);
-						this.issueManager.updateTask(new Task());
-						System.out.println("Hi***************am editing task*****in try block****last***********");
-						
-					} catch (DataIntegrityViolationException e) {
-						// probably email already exists - very rare case when multiple
-						// admins are adding same user
-						// at the same time and form validation has passed for more than one
-						// of them.
-						LOGGER.warn(
-								"Exception occurred when trying to save the user, assuming duplicate email",
-								e);
-						bindingResult.reject("email.exists", "Email already exists");
-						return "editTask";
-					}
-					// ok, redirect
-					return "redirect:/users";
-				}
-	*///***********************************************************************************//		
-				
+			//***********************Task Create ***********************************//				
 }

@@ -16,9 +16,13 @@
 <div class="container">
     <div class="jumbotron">
     </div>
-    <form role="form" name="task" action="" method="post">
+    <form role="form" name="editTask" action="" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="number" type="hidden" name="id" value="${task.id}"/>
+    id : <input type="number" type="hidden" name="id" id="id" value="${task.id}"/>
+    	 <div>
+            <label for="id">Issue id</label>
+            <input type="id" class="form-control" name="id" id="id" value="${task.id}"/>
+        </div>
         <div>
             <label for="issue_name">Issue Name</label>
             <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="${task.issue_name}"/>

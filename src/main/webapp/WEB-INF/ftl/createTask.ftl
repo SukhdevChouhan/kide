@@ -21,7 +21,7 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div>
             <label for="issue_name">Issue Name</label>
-            <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="test"
+            <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="VM-"
                    required autofocus placeholder="Issue Name"/>
         </div>
         <div>
