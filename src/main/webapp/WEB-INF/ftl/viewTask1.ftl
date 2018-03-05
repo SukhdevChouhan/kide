@@ -31,8 +31,9 @@
     <h2>Task Information </h2>
     <p>task data for analysis </p>
     <table class="table table-hover">
+        <thead>
         <tr>
-	   		<th>Task Id</th>
+        	<th>Task Id</th>
             <th>Task Name</th>
             <th>Report Date</th>
             <th>Update Date</th>
@@ -45,6 +46,8 @@
             <th>Other details</th>
             <th>Comments</th>
         </tr>
+        </thead>
+        <tbody>
         <#list tasks as task>
         <tr class="task-row" data-url="/task/edit?taskname=${task.issue_name}">
         	<td>${task.id}</td>
@@ -61,23 +64,9 @@
             <td>${task.issue_comments}</td>
         </tr>
         </#list>
+        </tbody>
     </table>
 </div>
 <div id="navigate"></div>
-
-<style>
-table, th , td  {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-}
-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
-}
-table tr:nth-child(even) {
-  background-color: #ffffff;
-}
-</style>
-
 </body>
 </html>

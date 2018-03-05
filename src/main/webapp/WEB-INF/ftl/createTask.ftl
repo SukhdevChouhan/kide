@@ -10,6 +10,7 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
+        <li><a href="/tasks">My Tasks</a></li>
     </ul>
 </nav>
 
@@ -26,50 +27,58 @@
         </div>
         <div>
             <label for="issue_status">Issue Status</label>
-            <input type="issue_status" name="issue_status" id="issue_status" value="test" placeholder="Issue Status"/>
+            <select name="issue_status" id="issue_status">
+            <option value = "submitted">Submitted</option>
+            <option value = "active">Active</option>
+            <option value = "completed">Completed</option>
+            <option value = "defer">Defer</option>
+            <option value = "working_as_designed">Working as designed</option>
+         </select>
         </div>
         <div>
             <label for="issue_report_date">Report Date</label>
-            <input type="issue_report_date" name="issue_report_date" id="issue_report_date"  value="test" required placeholder="Report Date"/>
+            <input type="date" name="issue_report_date" id="issue_report_date"  value="test" required placeholder="Report Date"/>
         </div>
         <div>
             <label for="issue_update_date">Update Date</label>
-            <input type="issue_update_date" name="issue_update_date" id="issue_update_date"  value="test" required
+            <input type="date" name="issue_update_date" id="issue_update_date"  value="test" required
                    autofocus placeholder="Update Date"/>
         </div>
 
         <div>
             <label for="issue_heading">Heading</label>
-            <input type="issue_heading"  name="issue_heading" id="issue_heading" value="test"
-                   required  placeholder="issue heading"/>
+            <input type="issue_heading"  name="issue_heading" id="issue_heading" required  placeholder="issue heading"/>
         </div>
         <div>
             <label for="issue_description">Description</label>
-            <input type="issue_description"  name="issue_description" id="issue_description" value="test" required autofocus placeholder="Description"/>
+            <input type="issue_description"  name="issue_description" id="issue_description" required autofocus placeholder="Description"/>
         </div>
         <div>
             <label for="issue_linked_with">Linked Issue</label>
-            <input type="issue_linked_with" name="issue_linked_with" id="issue_linked_with" value="test" required autofocus placeholder="Linked Issue"/>
+            <input type="issue_linked_with" name="issue_linked_with" id="issue_linked_with" required autofocus placeholder="Linked Issue"/>
         </div>
 		<div>
             <label for="issue_comments">Comments</label>
-            <input type="issue_comments"  name="issue_comments" id="issue_comments" value="test"
-                   required  placeholder="issue Comments"/>
+            <input type="issue_comments"  name="issue_comments" id="issue_comments" required  placeholder="issue Comments"/>
         </div>
         <div>
             <label for="issue_others">Other details</label>
-            <input type="issue_others"  name="issue_others" id="issue_others" value="test"
-                   required  placeholder="Other Details"/>
+            <input type="issue_others"  name="issue_others" id="issue_others" required  placeholder="Other Details"/>
         </div>
         <div>
             <label for="issue_closed">Issue Close date</label>
-            <input type="issue_closed"  name="issue_closed" id="issue_closed" value="test"
-                   required  placeholder="issue Closed date"/>
+            <input type="date"  name="issue_closed" id="issue_closed" required  placeholder="issue Closed date"/>
         </div>
         <div>
             <label for="issue_type">Issue Type</label>
-            <input type="issue_type"  name="issue_type" id="issue_type" value="test"
-                   required  placeholder="Issue Type"/>
+            <select name="issue_type" id="issue_type">
+            <option value = "bug">bug</option>
+            <option value = "task">task</option>
+             <option value = "sub_task">sub-task</option>
+            <option value = "epic">epic</option>
+            <option value = "story">Story</option>
+            <option value = "sub_story">Sub Story</option>
+         </select>
         </div>
 
         <button type="submit">Save</button>
