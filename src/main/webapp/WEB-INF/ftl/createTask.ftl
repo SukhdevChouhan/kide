@@ -23,7 +23,7 @@
         <div>
             <label for="issue_name">Issue Name</label>
             <input type="issue_name" class="form-control" name="issue_name" id="issue_name" value="VM-"
-                   required autofocus placeholder="Issue Name"/>
+                    autofocus placeholder="Issue Name"/>
         </div>
         <div>
             <label for="issue_status">Issue Status</label>
@@ -37,37 +37,37 @@
         </div>
         <div>
             <label for="issue_report_date">Report Date</label>
-            <input type="date" name="issue_report_date" id="issue_report_date"  value="test" required placeholder="Report Date"/>
+            <input type="date" name="issue_report_date" id="issue_report_date"  value="test"  placeholder="Report Date"/>
         </div>
         <div>
             <label for="issue_update_date">Update Date</label>
-            <input type="date" name="issue_update_date" id="issue_update_date"  value="test" required
+            <input type="date" name="issue_update_date" id="issue_update_date"  value="test" 
                    autofocus placeholder="Update Date"/>
         </div>
 
         <div>
             <label for="issue_heading">Heading</label>
-            <input type="issue_heading"  name="issue_heading" id="issue_heading" required  placeholder="issue heading"/>
+            <input type="issue_heading"  name="issue_heading" id="issue_heading"  placeholder="issue heading"/>
         </div>
         <div>
             <label for="issue_description">Description</label>
-            <input type="issue_description"  name="issue_description" id="issue_description" required autofocus placeholder="Description"/>
+            <input type="issue_description"  name="issue_description" id="issue_description"  autofocus placeholder="Description"/>
         </div>
         <div>
             <label for="issue_linked_with">Linked Issue</label>
-            <input type="issue_linked_with" name="issue_linked_with" id="issue_linked_with" required autofocus placeholder="Linked Issue"/>
+            <input type="issue_linked_with" name="issue_linked_with" id="issue_linked_with"  autofocus placeholder="Linked Issue"/>
         </div>
 		<div>
             <label for="issue_comments">Comments</label>
-            <input type="issue_comments"  name="issue_comments" id="issue_comments" required  placeholder="issue Comments"/>
+            <input type="issue_comments"  name="issue_comments" id="issue_comments"  placeholder="issue Comments"/>
         </div>
         <div>
             <label for="issue_others">Other details</label>
-            <input type="issue_others"  name="issue_others" id="issue_others" required  placeholder="Other Details"/>
+            <input type="issue_others"  name="issue_others" id="issue_others"  placeholder="Other Details"/>
         </div>
         <div>
             <label for="issue_closed">Issue Close date</label>
-            <input type="date"  name="issue_closed" id="issue_closed" required  placeholder="issue Closed date"/>
+            <input type="date"  name="issue_closed" id="issue_closed" placeholder="issue Closed date"/>
         </div>
         <div>
             <label for="issue_type">Issue Type</label>
