@@ -118,9 +118,9 @@ public class IssueCreateForm {
 
 	@NotNull
 	private String issue_type = "";
-	
+
 	private Long id;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -130,29 +130,21 @@ public class IssueCreateForm {
 	}
 
 	private UserRole userRole;
-	
+
 	public void setRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
-	
+		this.userRole = userRole;
+	}
+
 	public UserRole getRole() {
-        return userRole;
-    }
+		return userRole;
+	}
 
 	@Override
 	public String toString() {
-		return "TaskCreateForm{" + "issue_name='"
-				+ '\'' + ", issue_report_date='"
-				+ '\'' + ", issue_update_date=" 
-				+ '\'' + ", issue_heading="
-				+ '\'' + ", issue_description="
-				+ '\'' + ", issue_status=" 
-				+ '\'' + ", issue_linked_with="
-				+ '\'' + ", issue_comments="
-				+ '\'' + ", issue_others=" 
-				+ '\'' + ", issue_closed="
-				+ '\'' + ", issue_type="
-				+ '}';
+		return "TaskCreateForm{" + "issue_name='" + '\'' + ", issue_report_date='" + '\'' + ", issue_update_date="
+				+ '\'' + ", issue_heading=" + '\'' + ", issue_description=" + '\'' + ", issue_status=" + '\''
+				+ ", issue_linked_with=" + '\'' + ", issue_comments=" + '\'' + ", issue_others=" + '\''
+				+ ", issue_closed=" + '\'' + ", issue_type=" + '}';
 	}
 
 }

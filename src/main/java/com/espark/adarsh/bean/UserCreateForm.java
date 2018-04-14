@@ -7,120 +7,117 @@ import javax.validation.constraints.NotNull;
 
 public class UserCreateForm {
 
-    @NotEmpty
-    private String userName= "";
+	@NotEmpty
+	private String userName = "";
 
-    private String userPhone= "";
+	private String userPhone = "";
 
-    private Boolean enabled =true;
+	private Boolean enabled = true;
 
-    @NotEmpty
-    private String firstName= "";
+	@NotEmpty
+	private String firstName = "";
 
-    @NotEmpty
-    private String lastName= "";
+	@NotEmpty
+	private String lastName = "";
 
-    @NotEmpty
-    private String email = "";
+	@NotEmpty
+	private String email = "";
 
-    @NotEmpty
-    private String password = "";
+	@NotEmpty
+	private String password = "";
 
-    @NotEmpty
-    private String passwordRepeated = "";
+	@NotEmpty
+	private String passwordRepeated = "";
 
-    @NotNull
-    private String roleName="" ;
+	@NotNull
+	private String roleName = "";
 
-    private UserRole userRole;
+	private UserRole userRole;
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getUserPhone() {
-        return userPhone;
-    }
+	public String getUserPhone() {
+		return userPhone;
+	}
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
+	public Boolean getEnabled() {
+		return enabled;
+	}
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-    public void setRole(UserRole userRole) {
-        this.userRole = userRole;
-    }
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getPasswordRepeated() {
-        return passwordRepeated;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setPasswordRepeated(String passwordRepeated) {
-        this.passwordRepeated = passwordRepeated;
-    }
+	public String getPasswordRepeated() {
+		return passwordRepeated;
+	}
 
-    public String getRoleName() {
-        return roleName;
-    }
+	public void setPasswordRepeated(String passwordRepeated) {
+		this.passwordRepeated = passwordRepeated;
+	}
 
-    public UserRole getRole() {
-        return userRole;
-    }
+	public String getRoleName() {
+		return roleName;
+	}
 
-    @Override
-    public String toString() {
-        return "UserCreateForm{" +
-                "email='" + email.replaceFirst("@.+", "@***") + '\'' +
-                ", password=***" + '\'' +
-                ", passwordRepeated=***" + '\'' +
-                ", role=" + roleName +
-                '}';
-    }
+	public UserRole getRole() {
+		return userRole;
+	}
+
+	@Override
+	public String toString() {
+		return "UserCreateForm{" + "email='" + email.replaceFirst("@.+", "@***") + '\'' + ", password=***" + '\''
+				+ ", passwordRepeated=***" + '\'' + ", role=" + roleName + '}';
+	}
 
 }

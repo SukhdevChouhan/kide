@@ -15,22 +15,22 @@ import java.util.Map;
 @WebMvcController
 public class LoginController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-    @Value("${application.message}")
-    private String message;
+	@Value("${application.message}")
+	private String message;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView getLoginPage() {
-        LOGGER.info("Request Received for Login");
-        return new ModelAndView("login");
-    }
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView getLoginPage() {
+		LOGGER.info("Request Received for Login");
+		return new ModelAndView("login");
+	}
 
-    @RequestMapping(value="/",method = RequestMethod.GET)
-    public ModelAndView welcome(Map<String, Object> model) {
-        LOGGER.info("Request Received for welcome page");
-        model.put("time", new Date());
-        model.put("message", this.message+" "+ System.getProperty("user.name"));
-        return new ModelAndView("welcome", model);
-    }
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView welcome(Map<String, Object> model) {
+		LOGGER.info("Request Received for welcome page");
+		model.put("time", new Date());
+		model.put("message", this.message + " " + System.getProperty("user.name"));
+		return new ModelAndView("welcome", model);
+	}
 }

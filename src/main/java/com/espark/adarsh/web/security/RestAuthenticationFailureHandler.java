@@ -19,17 +19,17 @@ import java.io.IOException;
  */
 public class RestAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RestAuthenticationFailureHandler.class);
-    private static final String MESSAGE="AUTHENTICATION-NOT-SUCCESS";
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onAuthenticationFailure(HttpServletRequest httpServletRequest
-            , HttpServletResponse httpServletResponse, AuthenticationException authException)
-            throws IOException, ServletException {
-        LOG.error("On Authentication Failure Exception Occur",authException);
-        httpServletResponse.addHeader("MESSAGE",MESSAGE);
-        httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Bad credentials");
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(RestAuthenticationFailureHandler.class);
+	private static final String MESSAGE = "AUTHENTICATION-NOT-SUCCESS";
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+			AuthenticationException authException) throws IOException, ServletException {
+		LOG.error("On Authentication Failure Exception Occur", authException);
+		httpServletResponse.addHeader("MESSAGE", MESSAGE);
+		httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Bad credentials");
+	}
 }

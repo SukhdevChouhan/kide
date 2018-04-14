@@ -18,19 +18,19 @@ import java.io.IOException;
  */
 public class ApiServerAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    private static Logger LOG = LoggerFactory.getLogger(ApiServerAuthenticationEntryPoint.class);
-    private static final String MESSAGE="MESSAGE";
-    private static final String NOT_AUTHENTICATED_ACCESS_DENIED ="NOT-AUTHENTICATED-ACCESS-DENIED";
+	private static Logger LOG = LoggerFactory.getLogger(ApiServerAuthenticationEntryPoint.class);
+	private static final String MESSAGE = "MESSAGE";
+	private static final String NOT_AUTHENTICATED_ACCESS_DENIED = "NOT-AUTHENTICATED-ACCESS-DENIED";
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void commence(HttpServletRequest httpServletRequest
-            , HttpServletResponse httpServletResponse, AuthenticationException authException)
-            throws IOException, ServletException {
-        LOG.debug("Entering into Security Area "+ httpServletRequest.getRequestURI()+" "+ httpServletRequest.getQueryString()+" "+ httpServletRequest.getRequestURL());
-        httpServletResponse.addHeader(MESSAGE, NOT_AUTHENTICATED_ACCESS_DENIED);
-        httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+			AuthenticationException authException) throws IOException, ServletException {
+		LOG.debug("Entering into Security Area " + httpServletRequest.getRequestURI() + " "
+				+ httpServletRequest.getQueryString() + " " + httpServletRequest.getRequestURL());
+		httpServletResponse.addHeader(MESSAGE, NOT_AUTHENTICATED_ACCESS_DENIED);
+		httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+	}
 }

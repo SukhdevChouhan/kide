@@ -10,30 +10,28 @@ import javax.persistence.Table;
 @Table(name = "UserRole")
 public final class UserRole extends AbstractEntity<Long> {
 
-    @Column(nullable = false, length = 100)
-    private String name;
+	@Column(nullable = false, length = 100)
+	private String name;
 
-    public UserRole() {
-        super(UserRole.class);
-    }
+	public UserRole() {
+		super(UserRole.class);
+	}
 
-    public UserRole(String name) {
-        super(UserRole.class);
-        this.name = name;
-    }
+	public UserRole(String name) {
+		super(UserRole.class);
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "name='" + name + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "UserRole{" + "name='" + name + '\'' + '}';
+	}
 }

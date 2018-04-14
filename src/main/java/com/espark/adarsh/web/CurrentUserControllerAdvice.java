@@ -10,19 +10,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-@ControllerAdvice(assignableTypes  = {LoginController.class, UserController.class})
+@ControllerAdvice(assignableTypes = { LoginController.class, UserController.class })
 public class CurrentUserControllerAdvice {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CurrentUserControllerAdvice.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CurrentUserControllerAdvice.class);
 
-   @ModelAttribute("currentUser")
-    public UserDetails getCurrentUser(Authentication authentication) {
-       try{
-        return (authentication == null  ? null : (UserDetails) authentication.getPrincipal());
-       }catch (Exception e){
-           LOGGER.error("Exception "+e.getLocalizedMessage());
-       }
-       return null;
-    }
+	@ModelAttribute("currentUser")
+	public UserDetails getCurrentUser(Authentication authentication) {
+		try {
+			return (authentication == null ? null : (UserDetails) authentication.getPrincipal());
+		} catch (Exception e) {
+			LOGGER.error("Exception " + e.getLocalizedMessage());
+		}
+		return null;
+	}
 
 }

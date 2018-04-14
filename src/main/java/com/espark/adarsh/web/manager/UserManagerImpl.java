@@ -15,74 +15,73 @@ import com.espark.adarsh.persistence.repositories.RoleRepository;
 import com.espark.adarsh.persistence.repositories.UserRepository;
 
 @Service
-final public class UserManagerImpl
-        implements UserManager {
+final public class UserManagerImpl implements UserManager {
 
-    private final static Logger logger = LoggerFactory.getLogger(UserManagerImpl.class);
+	private final static Logger logger = LoggerFactory.getLogger(UserManagerImpl.class);
 
-    public UserManagerImpl() {
-    }
+	public UserManagerImpl() {
+	}
 
-    @Override
-    public void refreshUser(User user) {
-        userRepository.refreshUser(user);
-    }
+	@Override
+	public void refreshUser(User user) {
+		userRepository.refreshUser(user);
+	}
 
-    @Transactional
-    public Boolean saveUser(User user) {
-        userRepository.saveUser(user);
-        return null;
-    }
+	@Transactional
+	public Boolean saveUser(User user) {
+		userRepository.saveUser(user);
+		return null;
+	}
 
-    @Transactional
-    public Boolean updateUser(User user) {
-        userRepository.updateUser(user);
-        return null;
-    }
+	@Transactional
+	public Boolean updateUser(User user) {
+		userRepository.updateUser(user);
+		return null;
+	}
 
-    @Transactional
-    public Boolean deleteUser(User user) {
-        userRepository.deleteUser(user);
-        return null;
-    }
+	@Transactional
+	public Boolean deleteUser(User user) {
+		userRepository.deleteUser(user);
+		return null;
+	}
 
-    public User getUser(final User user) {
-        return  userRepository.getUser(user);
-    }
+	public User getUser(final User user) {
+		return userRepository.getUser(user);
+	}
 
-    @Override
-    public Collection<User> getAllUser() {
-        return userRepository.getAllUser();
-    }
+	@Override
+	public Collection<User> getAllUser() {
+		return userRepository.getAllUser();
+	}
 
-    @Override
-    public User getUserById(User user) {
-        return userRepository.getUserById(user);
-    }
+	@Override
+	public User getUserById(User user) {
+		return userRepository.getUserById(user);
+	}
 
-    @Override
-    public User getUserByName(User user) {
-        return userRepository.getUserByName(user);
-    }
+	@Override
+	public User getUserByName(User user) {
+		return userRepository.getUserByName(user);
+	}
 
-    @Override
-    public UserRole getUserRole(String roleName) {
-        return roleRepository.getRoleByName(roleName);
-    }
+	@Override
+	public UserRole getUserRole(String roleName) {
+		return roleRepository.getRoleByName(roleName);
+	}
 
-    @Qualifier("userRepositoryImpl")
-    @Autowired
-    private UserRepository userRepository;
+	@Qualifier("userRepositoryImpl")
+	@Autowired
+	private UserRepository userRepository;
 
-    public void setUserRepository(final UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+	public void setUserRepository(final UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
-    @Qualifier("roleRepositoryImpl")
-    @Autowired
-    private RoleRepository roleRepository;
+	@Qualifier("roleRepositoryImpl")
+	@Autowired
+	private RoleRepository roleRepository;
 
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
 }

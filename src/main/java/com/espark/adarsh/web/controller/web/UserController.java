@@ -21,19 +21,19 @@ import com.espark.adarsh.web.manager.UserManager;
 @WebMvcController
 public class UserController {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(UserController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired(required = true)
 	private UserManager userManager;
-//****************************User View********************************//
+
+	// ****************************User View********************************//
 	@RequestMapping("/users")
 	public ModelAndView getUsersPage() {
 		LOGGER.debug("Getting users page");
 		return new ModelAndView("users", "users", userManager.getAllUser());
 	}
 
-//***********************User Create**********************************//	
+	// ***********************User Create**********************************//
 	// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@RequestMapping(value = "/user/create", method = RequestMethod.GET)
 	public ModelAndView getUserCreatePage() {
@@ -43,18 +43,14 @@ public class UserController {
 
 	// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
-	public String handleUserCreateForm(
-			@Valid @ModelAttribute("form") UserCreateForm form,
-			BindingResult bindingResult) {
-		LOGGER.debug("Processing user create form={}, bindingResult={}", form,
-				bindingResult);
+	public String handleUserCreateForm(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult) {
+		LOGGER.debug("Processing user create form={}, bindingResult={}", form, bindingResult);
 		if (bindingResult.hasErrors()) {
 			// failed validation
 			return "createUser";
 		}
 		try {
-			final UserRole userRole = this.userManager.getUserRole(form
-					.getRoleName());
+			final UserRole userRole = this.userManager.getUserRole(form.getRoleName());
 			form.setRole(userRole);
 			this.userManager.saveUser(new User(form));
 		} catch (DataIntegrityViolationException e) {
@@ -62,13 +58,17 @@ public class UserController {
 			// admins are adding same user
 			// at the same time and form validation has passed for more than one
 			// of them.
-			LOGGER.warn(
-					"Exception occurred when trying to save the user, assuming duplicate email",
-					e);
+			LOGGER.warn("Exception occurred when trying to save the user, assuming duplicate email", e);
 			bindingResult.reject("email.exists", "Email already exists");
 			return "createUser";
 		}
 		// ok, redirect
 		return "redirect:/users";
+	}
+
+	// ***********************Excel-Json App**********************************//
+	public String getJsonApp() {
+		// new angularExcel();
+		return null;
 	}
 }

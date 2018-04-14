@@ -6,66 +6,61 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import java.io.Serializable;
 
-@JsonPropertyOrder({"userName", "userPassword","token","message","httpStatus"})
+@JsonPropertyOrder({ "userName", "userPassword", "token", "message", "httpStatus" })
 public class ApiServerViewBean implements Serializable {
 
+	@JsonProperty("User-Name")
+	private String userName;
 
-    @JsonProperty("User-Name")
-    private String userName;
+	@JsonProperty("User-Password")
+	private String userPassword;
 
+	@JsonProperty("Authentication-token")
+	private String token;
 
-    @JsonProperty("User-Password")
-    private String userPassword;
+	@JsonProperty("Response-Message")
+	private String message;
 
+	@JsonProperty("Response-Status")
+	private Integer httpStatus;
 
-    @JsonProperty("Authentication-token")
-    private String token;
+	public String getUserName() {
+		return userName;
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    @JsonProperty("Response-Message")
-    private String message;
+	public String getUserPassword() {
+		return userPassword;
+	}
 
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
 
-    @JsonProperty("Response-Status")
-    private Integer httpStatus;
+	public String getToken() {
+		return token;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public void setToken(String token) {
+		this.token = token;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public String getUserPassword() {
-        return userPassword;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
+	public Integer getHttpStatus() {
+		return httpStatus;
+	}
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Integer getHttpStatus() {
-        return httpStatus;
-    }
-
-    public void setHttpStatus(Integer httpStatus) {
-        this.httpStatus = httpStatus;
-    }
+	public void setHttpStatus(Integer httpStatus) {
+		this.httpStatus = httpStatus;
+	}
 }

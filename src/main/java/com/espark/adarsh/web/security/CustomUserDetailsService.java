@@ -23,35 +23,35 @@ import java.util.Collection;
 @Transactional(readOnly = true)
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private static final Logger logger = LoggerFactory.getLogger("CustomUserDetailsService");
+	private static final Logger logger = LoggerFactory.getLogger("CustomUserDetailsService");
 
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-        logger.debug("DbUserDetailsService loadUserByUsername() ");
-        try {
-            User bean = new User(username);
-            bean = userManager.getUser(bean);
-            userManager.updateUser(bean);
-            Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(bean.getUserRoles().size());
-            for (UserRole role : bean.getUserRoles()) {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
-            }
-            UserDetailsImpl details = new UserDetailsImpl(bean.getUserName(), bean.getUserPwd(), bean.getEnabled(),
-                    true, true, true, authorities);
-            details.setUser(bean);
-            return details;
-        } catch (Exception e) {
-            logger.error("Unable to find record with username:=" + username, e);
-        }
-        return null;
-    }
+	@Override
+	@Transactional
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
+		logger.debug("DbUserDetailsService loadUserByUsername() ");
+		try {
+			User bean = new User(username);
+			bean = userManager.getUser(bean);
+			userManager.updateUser(bean);
+			Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(bean.getUserRoles().size());
+			for (UserRole role : bean.getUserRoles()) {
+				authorities.add(new SimpleGrantedAuthority(role.getName()));
+			}
+			UserDetailsImpl details = new UserDetailsImpl(bean.getUserName(), bean.getUserPwd(), bean.getEnabled(),
+					true, true, true, authorities);
+			details.setUser(bean);
+			return details;
+		} catch (Exception e) {
+			logger.error("Unable to find record with username:=" + username, e);
+		}
+		return null;
+	}
 
-    @Qualifier("userManagerImpl")
-    @Autowired
-    private UserManager userManager;
+	@Qualifier("userManagerImpl")
+	@Autowired
+	private UserManager userManager;
 
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
-    }
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
 }

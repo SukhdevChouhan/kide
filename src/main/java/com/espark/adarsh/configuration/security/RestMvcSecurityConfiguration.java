@@ -26,140 +26,114 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class RestMvcSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
+	@EnableGlobalMethodSecurity(prePostEnabled = true)
+	@Configuration
+	@Order(1)
+	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
-    @EnableGlobalMethodSecurity(prePostEnabled = true)
-    @Configuration
-    @Order(1)
-    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+		@Override
+		public void configure(WebSecurity webSecurity) throws Exception {
+			webSecurity.ignoring().antMatchers("*.js").antMatchers("*.css").antMatchers("/imaages/**")
+					.antMatchers("*.ico").antMatchers("/rest/authenticate/login");
+		}
 
-        @Override
-        public void configure(WebSecurity webSecurity) throws Exception {
-            webSecurity.ignoring().antMatchers("*.js")
-                    .antMatchers("*.css")
-                    .antMatchers("/imaages/**")
-                    .antMatchers("*.ico")
-                    .antMatchers("/rest/authenticate/login");
-        }
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
+			http.regexMatcher("/rest/*")
+					.csrf()
+					.disable()
+					// never use server side sessions (stateless mode)
+					.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+					.authorizeRequests().antMatchers(RestAuthenticationServiceImpl.LOGIN_URL).permitAll()
+					.antMatchers(ApplicationController.WELCOME_URL).hasAnyAuthority(getAllRoles())
+					.antMatchers("/rest/**").authenticated().and().httpBasic().disable().formLogin().disable()
+					.rememberMe().disable().requestCache().disable().x509().disable().logout()
+					.disable()
+					// .anonymous().disable()
+					// add custom authentication filter
+					.addFilterBefore(this.getAuthenticationTokenProcessingFilter(), BasicAuthenticationFilter.class)
+					// register custom authentication exception handler
+					.exceptionHandling().authenticationEntryPoint(this.getEntryPointBean())
+					.accessDeniedHandler(this.getAccessDeniedHandler());
+		}
 
-            http.regexMatcher("/rest/*")
-                    .csrf().disable()
-                    // never use server side sessions (stateless mode)
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
-                    .authorizeRequests()
-                    .antMatchers(RestAuthenticationServiceImpl.LOGIN_URL).permitAll()
-                    .antMatchers(ApplicationController.WELCOME_URL).hasAnyAuthority(getAllRoles())
-                    .antMatchers("/rest/**").authenticated()
-                    .and()
-                    .httpBasic().disable()
-                    .formLogin().disable()
-                    .rememberMe().disable()
-                    .requestCache().disable()
-                    .x509().disable()
-                    .logout().disable()
-                    //.anonymous().disable()
-                    // add custom authentication filter
-                    .addFilterBefore(this.getAuthenticationTokenProcessingFilter(), BasicAuthenticationFilter.class)
-                            // register custom authentication exception handler
-                    .exceptionHandling().authenticationEntryPoint(this.getEntryPointBean())
-                    .accessDeniedHandler(this.getAccessDeniedHandler());
-        }
+		@Override
+		public void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.authenticationProvider(getRestApiAuthProvider());
+		}
 
-        @Override
-        public void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.authenticationProvider(getRestApiAuthProvider());
-        }
+		@Bean
+		@Override
+		public AuthenticationManager authenticationManagerBean() throws Exception {
+			return super.authenticationManagerBean();
+		}
 
-        @Bean
-        @Override
-        public AuthenticationManager authenticationManagerBean() throws Exception {
-            return super.authenticationManagerBean();
-        }
+		@Bean(name = "authenticationProvider")
+		public AuthenticationProvider getRestApiAuthProvider() {
+			return new RestApiAuthProvider();
+		}
 
-        @Bean(name = "authenticationProvider")
-        public AuthenticationProvider getRestApiAuthProvider() {
-            return new RestApiAuthProvider();
-        }
+		@Bean
+		public AuthenticationTokenProcessingFilter getAuthenticationTokenProcessingFilter() throws Exception {
+			return new AuthenticationTokenProcessingFilter(this.authenticationManager(), this.tokenService());
+		}
 
-        @Bean
-        public AuthenticationTokenProcessingFilter getAuthenticationTokenProcessingFilter() throws Exception {
-            return new AuthenticationTokenProcessingFilter(this.authenticationManager(), this.tokenService());
-        }
+		@Bean(name = "entryPoint")
+		public ApiServerAuthenticationEntryPoint getEntryPointBean() {
+			return new ApiServerAuthenticationEntryPoint();
+		}
 
-        @Bean(name = "entryPoint")
-        public ApiServerAuthenticationEntryPoint getEntryPointBean() {
-            return new ApiServerAuthenticationEntryPoint();
-        }
+		@Bean(name = "accessDeniedHandler")
+		public RestAccessDeniedHandler getAccessDeniedHandler() {
+			return new RestAccessDeniedHandler();
+		}
 
-        @Bean(name = "accessDeniedHandler")
-        public RestAccessDeniedHandler getAccessDeniedHandler() {
-            return new RestAccessDeniedHandler();
-        }
+		@Bean(name = "md5PasswordEncoder")
+		public Md5PasswordEncoder getEncoder() {
+			return new Md5PasswordEncoder();
+		}
 
-        @Bean(name = "md5PasswordEncoder")
-        public Md5PasswordEncoder getEncoder() {
-            return new Md5PasswordEncoder();
-        }
+		@Bean
+		public TokenService tokenService() {
+			return new TokenService();
+		}
+	}
 
-        @Bean
-        public TokenService tokenService() {
-            return new TokenService();
-        }
-    }
+	@EnableGlobalMethodSecurity(prePostEnabled = true)
+	@Configuration
+	@Order(2)
+	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
-    @EnableGlobalMethodSecurity(prePostEnabled = true)
-    @Configuration
-    @Order(2)
-    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+		@Autowired
+		private UserDetailsService userDetailsService;
 
-        @Autowired
-        private UserDetailsService userDetailsService;
+		@Override
+		public void configure(WebSecurity webSecurity) throws Exception {
+			webSecurity.ignoring().antMatchers("*.js").antMatchers("*.css").antMatchers("/imaages/*")
+					.antMatchers("*.ico");
+		}
 
-        @Override
-        public void configure(WebSecurity webSecurity) throws Exception {
-            webSecurity.ignoring().antMatchers("*.js")
-                    .antMatchers("*.css")
-                    .antMatchers("/imaages/*")
-                    .antMatchers("*.ico");
-        }
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.authorizeRequests().antMatchers("/home").hasAnyRole(getAllRoles()).antMatchers("/**").authenticated()
+					.anyRequest().fullyAuthenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/")
+					.failureUrl("/login?error=true").usernameParameter("username").passwordParameter("password")
+					.permitAll().and().logout().logoutUrl("/logout").deleteCookies("remember-me")
+					.logoutSuccessUrl("/login?logout=true").permitAll().and().rememberMe();
+		}
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                    .antMatchers("/home").hasAnyRole(getAllRoles())
-                    .antMatchers("/**").authenticated()
-                    .anyRequest().fullyAuthenticated()
-                    .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/")
-                    .failureUrl("/login?error=true")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .permitAll()
-                    .and()
-                    .logout()
-                    .logoutUrl("/logout")
-                    .deleteCookies("remember-me")
-                    .logoutSuccessUrl("/login?logout=true")
-                    .permitAll()
-                    .and()
-                    .rememberMe();
-        }
+		@Override
+		public void configure(AuthenticationManagerBuilder auth) throws Exception {
+			// with encryption
+			// auth.userDetailsService(userDetailsService).passwordEncoder(new
+			// BCryptPasswordEncoder());
+			// without encryption
+			auth.userDetailsService(userDetailsService);
+		}
+	}
 
-        @Override
-        public void configure(AuthenticationManagerBuilder auth) throws Exception {
-            // with encryption
-            //auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-            // without encryption
-            auth.userDetailsService(userDetailsService);
-        }
-    }
-
-    private static String[] getAllRoles() {
-        return new String[]{"ROLE_SUPERADMIN", "ROLE_ADMIN", "ROLE_USER"};
-    }
+	private static String[] getAllRoles() {
+		return new String[] { "ROLE_SUPERADMIN", "ROLE_ADMIN", "ROLE_USER" };
+	}
 }

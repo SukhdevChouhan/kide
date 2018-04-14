@@ -20,65 +20,67 @@ import java.io.IOException;
 
 public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 
-    private static Logger LOG = LoggerFactory.getLogger(AuthenticationTokenProcessingFilter.class);
+	private static Logger LOG = LoggerFactory.getLogger(AuthenticationTokenProcessingFilter.class);
 
-    @Autowired(required = true)
-    private TokenProvider tokenProvider;
+	@Autowired(required = true)
+	private TokenProvider tokenProvider;
 
-    private TokenService tokenService;
+	private TokenService tokenService;
 
-    @Autowired(required = true)
-    private AuthenticationManager authenticationManager;
+	@Autowired(required = true)
+	private AuthenticationManager authenticationManager;
 
-    private SecurityContextProvider securityContextProvider  = new SecurityContextProvider();
+	private SecurityContextProvider securityContextProvider = new SecurityContextProvider();
 
-    private WebAuthenticationDetailsSource webAuthenticationDetailsSource = new WebAuthenticationDetailsSource();
+	private WebAuthenticationDetailsSource webAuthenticationDetailsSource = new WebAuthenticationDetailsSource();
 
-    public AuthenticationTokenProcessingFilter(AuthenticationManager authenticationManager,final TokenService tokenService) {
-        this.authenticationManager = authenticationManager;
-        this.tokenService=tokenService;
-    }
+	public AuthenticationTokenProcessingFilter(AuthenticationManager authenticationManager,
+			final TokenService tokenService) {
+		this.authenticationManager = authenticationManager;
+		this.tokenService = tokenService;
+	}
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
-        LOG.debug("Checking headers and parameters for authentication token...");
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+			ServletException {
+		LOG.debug("Checking headers and parameters for authentication token...");
 
-        String token = null;
+		String token = null;
 
-        final HttpServletRequest httpServletRequest = this.asHttpServletRequest(request);
-        if (httpServletRequest.getHeader("Authentication-token") != null) {
-            token = httpServletRequest.getHeader("Authentication-token");
-            LOG.debug("Found token '" + token + "' in request headers");
-        }
+		final HttpServletRequest httpServletRequest = this.asHttpServletRequest(request);
+		if (httpServletRequest.getHeader("Authentication-token") != null) {
+			token = httpServletRequest.getHeader("Authentication-token");
+			LOG.debug("Found token '" + token + "' in request headers");
+		}
 
-        if (token != null) {
-            if(this.tokenService.contains(token)){
-                final SecurityContext securityContext = this.securityContextProvider.getSecurityContext();
-                securityContext.setAuthentication(this.tokenService.retrieve(token));
-            }else if (tokenProvider.isTokenValid(token)) {
-                final User user = tokenProvider.getUserFromToken(token);
-                LOG.debug("Inside-AuthenticationTokenProcessingFilter.java");
-                this.authenticateUser(httpServletRequest, user,token);
-            }
-        }
-        chain.doFilter(request, response);
-    }
+		if (token != null) {
+			if (this.tokenService.contains(token)) {
+				final SecurityContext securityContext = this.securityContextProvider.getSecurityContext();
+				securityContext.setAuthentication(this.tokenService.retrieve(token));
+			} else if (tokenProvider.isTokenValid(token)) {
+				final User user = tokenProvider.getUserFromToken(token);
+				LOG.debug("Inside-AuthenticationTokenProcessingFilter.java");
+				this.authenticateUser(httpServletRequest, user, token);
+			}
+		}
+		chain.doFilter(request, response);
+	}
 
-    private HttpServletRequest asHttpServletRequest(ServletRequest servletRequest){
-        return (HttpServletRequest)servletRequest;
-    }
+	private HttpServletRequest asHttpServletRequest(ServletRequest servletRequest) {
+		return (HttpServletRequest) servletRequest;
+	}
 
-    private HttpServletResponse asHttpServletResponse(ServletResponse servletResponse){
-        return (HttpServletResponse)servletResponse;
-    }
+	private HttpServletResponse asHttpServletResponse(ServletResponse servletResponse) {
+		return (HttpServletResponse) servletResponse;
+	}
 
-    private void authenticateUser(HttpServletRequest request, User user,String token) {
-        final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(), user.getUserPwd());
-        authenticationToken.setDetails(this.webAuthenticationDetailsSource.buildDetails(request));
-        final SecurityContext securityContext = this.securityContextProvider.getSecurityContext();
-        final Authentication authentication=this.authenticationManager.authenticate(authenticationToken);
-        securityContext.setAuthentication(authentication);
-        this.tokenService.store(token,authentication);
-    }
+	private void authenticateUser(HttpServletRequest request, User user, String token) {
+		final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+				user.getUserName(), user.getUserPwd());
+		authenticationToken.setDetails(this.webAuthenticationDetailsSource.buildDetails(request));
+		final SecurityContext securityContext = this.securityContextProvider.getSecurityContext();
+		final Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
+		securityContext.setAuthentication(authentication);
+		this.tokenService.store(token, authentication);
+	}
 }
