@@ -12,7 +12,7 @@ import com.mysql.jdbc.Statement;
 
 class JDBCDemo9 {
 	// TaskCreateForm tc = new TaskCreateForm();
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		Connection conn = null;
 		Scanner sc = null;
 		ResultSet rs = null;

@@ -1,11 +1,17 @@
 package com.espark.adarsh.web.controller.web;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.espark.adarsh.annotations.WebMvcController;
@@ -20,11 +26,20 @@ public class InventoryController {
 //	@Autowired(required = true)
 	private InventoryManager inventoryManager;
 	
-	// ********************************Task View****************************//
-		@RequestMapping("/inventory")
+	// ********************************Inventory View****************************//
+		/*@RequestMapping("/inventory")
 		public ModelAndView getTasksPage() throws IOException {
 			LOGGER.debug("Getting inventory page");
-			return new ModelAndView("viewInventory", "inventory",inventoryManager.getAllInventory());
-//			return new ModelAndView("viewInventory", "inventory", new CreateJson().CreateJsonMethod());
+			CreateJson createJson = new CreateJson();
+			Map<String, Object> ls = createJson.CreateJsonMethod();
+			return new ModelAndView("viewInventory", ls);
 		}
+}*/
+	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getTasksPage() throws IOException {
+		CreateJson createJson = new CreateJson();
+		Map<String, Object> ls = createJson.CreateJsonMethod();
+//		return new ModelAndView("viewInventory", ls);
+	    return new ResponseEntity<Map<String, Object>>(ls, HttpStatus.OK);
+	}
 }
