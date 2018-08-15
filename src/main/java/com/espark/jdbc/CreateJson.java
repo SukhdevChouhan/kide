@@ -1,4 +1,4 @@
-package com.ssc.util;
+package com.espark.jdbc;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class CreateJson {
 	 */
 	// public static void main(String[] args) throws IOException {
 	public Map<String, Object> CreateJsonMethod() throws IOException {
-		String filePath = "E:/kida/kide/";
+		String filePath = "D:/kida repositories/kide/src/main/resources/";
 		String fileName = "angularExcelapp01.xlsx";
 		int sheetNumber = 1;
 		GetExcelData data = new GetExcelData();

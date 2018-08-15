@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.espark.adarsh.annotations.WebMvcController;
 import com.espark.adarsh.web.manager.InventoryManager;
 import com.espark.adarsh.web.manager.IssueManager;
-import com.ssc.util.CreateJson;
+import com.espark.jdbc.CreateJson;
 
 @WebMvcController
 public class InventoryController {
@@ -27,19 +27,19 @@ public class InventoryController {
 	private InventoryManager inventoryManager;
 	
 	// ********************************Inventory View****************************//
-		/*@RequestMapping("/inventory")
+		@RequestMapping("/inventory")
 		public ModelAndView getTasksPage() throws IOException {
 			LOGGER.debug("Getting inventory page");
 			CreateJson createJson = new CreateJson();
 			Map<String, Object> ls = createJson.CreateJsonMethod();
 			return new ModelAndView("viewInventory", ls);
 		}
-}*/
-	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
+}
+	/*@RequestMapping(value = "/inventory", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> getTasksPage() throws IOException {
 		CreateJson createJson = new CreateJson();
-		Map<String, Object> ls = createJson.CreateJsonMethod();
+		Map<String, Object> ls = createJson .CreateJsonMethod();
 //		return new ModelAndView("viewInventory", ls);
 	    return new ResponseEntity<Map<String, Object>>(ls, HttpStatus.OK);
 	}
-}
+}*/

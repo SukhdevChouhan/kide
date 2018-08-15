@@ -1,4 +1,4 @@
-package com.ssc.util;
+package com.espark.jdbc;
 
 import java.io.File;
 import java.io.FileInputStream;
