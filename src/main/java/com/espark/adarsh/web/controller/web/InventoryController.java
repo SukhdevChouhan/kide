@@ -38,10 +38,11 @@ public class InventoryController {
 			List<List<Object>> passJsonList = createJson.CreateJsonMethod();
 			Iterator itr = passJsonList.iterator();
 			
-			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.setViewName("viewInventory");
-			return modelAndView.addObject("inventory", passJsonList.toString());
-//			return modelAndView.addObject("inventory", ls);
+//			ModelAndView modelAndView = new ModelAndView();
+//			modelAndView.setViewName("viewInventory");
+//			return modelAndView.addObject("inventory", passJsonList.toString());
+			//OR
+			return new ModelAndView("viewInventory", "inventory", passJsonList.toString());
 		}
 
 	/*@RequestMapping(value = "/inventory", method = RequestMethod.GET)
