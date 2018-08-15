@@ -21,8 +21,9 @@ public class CreateJson {
 	 * @return
 	 * @throws IOException
 	 */
-	// public static void main(String[] args) throws IOException {
-	public Map<String, Object> CreateJsonMethod() throws IOException {
+//	 public static void main(String[] args) throws IOException {
+//	public Map<String, Object> CreateJsonMethod() throws IOException {
+	public List<List<Object>> CreateJsonMethod() throws IOException {
 		String filePath = "D:/kida repositories/kide/src/main/resources/";
 		String fileName = "angularExcelapp01.xlsx";
 		int sheetNumber = 1;
@@ -39,7 +40,8 @@ public class CreateJson {
 		System.out.println("listOfValuesRowWise : " + listOfValuesRowWise);
 
 		CreateJson createJson = new CreateJson();
-		return createJson.splitListData(listOfValuesRowWise);
+		return listOfValuesRowWise;
+//		return createJson.splitListData(listOfValuesRowWise);
 	}
 
 	public Map<String, Object> splitListData(List<List<Object>> listOfValuesRowWise) throws IOException {

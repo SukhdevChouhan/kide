@@ -26,7 +26,7 @@
             <li><a href="/user/create">Create a new user</a></li>
             <li><a href="/users">View all users</a></li>
             <li><a href="/tasks">My Tasks</a></li>
-            <li><a href="/inventory">Inventory</a></li>
+            <li><a href="/viewInventoryController">Inventory</a></li>
         </#if>
         </ul>
     </nav>

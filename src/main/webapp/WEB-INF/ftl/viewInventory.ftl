@@ -6,7 +6,7 @@
 <p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
 
 <p id="demo"></p>
-
+${inventory}
 <script>
 
 var xmlhttp = new XMLHttpRequest();
