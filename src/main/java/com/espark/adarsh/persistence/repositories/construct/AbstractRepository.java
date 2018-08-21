@@ -1,6 +1,8 @@
 package com.espark.adarsh.persistence.repositories.construct;
 
 import com.espark.adarsh.persistence.entites.construct.Entity;
+import com.espark.adarsh.persistence.entites.impl.Inventory;
+
 import org.hibernate.*;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import javax.persistence.Table;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -368,5 +371,4 @@ public abstract class AbstractRepository<R> implements EntityRepository<R> {
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-
 }

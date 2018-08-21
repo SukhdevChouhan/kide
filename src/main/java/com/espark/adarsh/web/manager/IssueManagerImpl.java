@@ -17,6 +17,22 @@ public class IssueManagerImpl implements IssueManager {
 	public void refreshTask(Task task) {
 		taskRepository.refreshTask(task);
 	}
+	
+	@Qualifier("taskRepositoryImpl")
+	@Autowired
+	private TaskRepository taskRepository;
+	
+	public void setTaskRepository(final TaskRepository taskRepository) {
+		this.taskRepository = taskRepository;
+	}
+	
+	@Qualifier("roleRepositoryImpl")
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
 
 	@Transactional
 	public Boolean saveTask(Task task) {
@@ -55,19 +71,4 @@ public class IssueManagerImpl implements IssueManager {
 		return taskRepository.getTaskByName(task);
 	}
 
-	@Qualifier("taskRepositoryImpl")
-	@Autowired
-	private TaskRepository taskRepository;
-
-	public void setTaskRepository(final TaskRepository taskRepository) {
-		this.taskRepository = taskRepository;
-	}
-
-	@Qualifier("roleRepositoryImpl")
-	@Autowired
-	private RoleRepository roleRepository;
-
-	public void setRoleRepository(RoleRepository roleRepository) {
-		this.roleRepository = roleRepository;
-	}
 }

@@ -32,21 +32,21 @@ public class CreateJson {
 		// Map<Object,Object> returnArgs = new HashMap<Object, Object>();
 
 		// no need to convert header to map
-		Map<String, Object> headerKeys = data.convertListToMap(list);
+//		Map<String, Object> headerKeys = data.convertListToMap(list);
 		// System.out.println(headerKeys);
 
 		List<Object> excelDataList = data.readExcelData(filePath, fileName, sheetNumber);
 		List<List<Object>> listOfValuesRowWise = data.divideListAsPerHeaderSize(excelDataList, list.size());
 		System.out.println("listOfValuesRowWise : " + listOfValuesRowWise);
 
-		CreateJson createJson = new CreateJson();
 		return listOfValuesRowWise;
+//		CreateJson createJson = new CreateJson();
 //		return createJson.splitListData(listOfValuesRowWise);
 	}
 
 	public Map<String, Object> splitListData(List<List<Object>> listOfValuesRowWise) throws IOException {
 		Map<String, Object> myMap = new HashMap<String, Object>();
-		int i, j,k;
+		int i, j;
 		for (i = 0; i < listOfValuesRowWise.size(); i++) {
 			List<Object> listOfElevenValuesOfEachRow = new ArrayList<Object>(); 
 			for (j = 0; j < listOfValuesRowWise.get(i).size(); j++) {

@@ -14,9 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.espark.adarsh.annotations.WebMvcController;
+import com.espark.adarsh.persistence.entites.impl.Inventory;
 import com.espark.adarsh.web.manager.InventoryManager;
 import com.espark.adarsh.web.manager.IssueManager;
 import com.espark.jdbc.CreateJson;
@@ -25,31 +27,27 @@ import com.espark.jdbc.CreateJson;
 public class InventoryController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(InventoryController.class);
 	
-//	@Autowired(required = true)
+	@Autowired(required = true)
 	private InventoryManager inventoryManager;
 
 	private String passJsonString;
 	
 	// ********************************Inventory View****************************//
-		@RequestMapping(value="/viewInventoryController", method = RequestMethod.GET)
+		/*@RequestMapping(value="/viewInventoryController", method = RequestMethod.GET)
 		public ModelAndView getTasksPage() throws IOException {
 			LOGGER.debug("Getting inventory page");
 			CreateJson createJson = new CreateJson();
 			List<List<Object>> passJsonList = createJson.CreateJsonMethod();
-			Iterator itr = passJsonList.iterator();
 			
 //			ModelAndView modelAndView = new ModelAndView();
 //			modelAndView.setViewName("viewInventory");
 //			return modelAndView.addObject("inventory", passJsonList.toString());
 			//OR
 			return new ModelAndView("viewInventory", "inventory", passJsonList.toString());
-		}
+		}*/
 
-	/*@RequestMapping(value = "/inventory", method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> getTasksPage() throws IOException {
-		CreateJson createJson = new CreateJson();
-		Map<String, Object> ls = createJson .CreateJsonMethod();
-//		return new ModelAndView("viewInventory", ls);
-	    return new ResponseEntity<Map<String, Object>>(ls, HttpStatus.OK);
-	}*/
+	@RequestMapping(value = "/viewInventoryController", method = RequestMethod.GET)
+	public ModelAndView getTasksPage() throws IOException {
+		return new ModelAndView("viewInventory", "inventory", inventoryManager.getAllInventory());
+	}
 }

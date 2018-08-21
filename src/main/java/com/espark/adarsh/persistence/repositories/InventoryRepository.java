@@ -4,6 +4,6 @@ import java.util.Collection;
 
 import com.espark.adarsh.persistence.entites.impl.Inventory;
 
-public interface InventoryRepository {
+public interface InventoryRepository<T> {
 	public Collection<Inventory> getAllInventory();
 }
