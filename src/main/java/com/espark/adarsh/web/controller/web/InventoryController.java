@@ -25,6 +25,7 @@ import com.espark.jdbc.CreateJson;
 
 @WebMvcController
 public class InventoryController {
+	Inventory inventory=null;
 	private static final Logger LOGGER = LoggerFactory.getLogger(InventoryController.class);
 	
 	@Autowired(required = true)
@@ -46,8 +47,8 @@ public class InventoryController {
 			return new ModelAndView("viewInventory", "inventory", passJsonList.toString());
 		}*/
 
-	@RequestMapping(value = "/viewInventoryController", method = RequestMethod.GET)
-	public ModelAndView getTasksPage() throws IOException {
+	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
+	public ModelAndView getInventoryPage() throws IOException {
 		return new ModelAndView("viewInventory", "inventory", inventoryManager.getAllInventory());
 	}
 }

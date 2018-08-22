@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.espark.adarsh.persistence.entites.impl.Inventory;
+import com.espark.adarsh.persistence.entites.impl.Task;
 import com.espark.adarsh.persistence.repositories.InventoryRepository;
 import com.espark.adarsh.persistence.repositories.construct.AbstractRepository;
 
@@ -29,5 +30,10 @@ public class InventoryRepositoryImpl<E> extends AbstractRepository<Inventory> im
 			e.printStackTrace();
 		}
 		return inventory;*/
+	}
+	
+	@Override
+	public void refreshTask(Inventory inventory) {
+		super.refresh(inventory);
 	}
 }

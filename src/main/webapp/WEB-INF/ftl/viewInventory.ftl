@@ -22,24 +22,38 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/task/create">Create Task</a></li>
     </ul>
     
 </nav>
 
 <div class="container">
-    <h2>Task Information </h2>
-    <p>task data for analysis </p>
+    <h2>Inventory Information </h2>
+    <p>Items data for analysis </p>
     <table class="table table-hover">
         <tr>
 	   		<th>S.No.</th>
-	   		<th>Date</th>
-	   		
+	   		<th>invDate</th>
+	   		<th>item</th>
+	   		<th>price</th>
+	   		<th>catagory</th>
+	   		<th>quantity</th>
+	   		<th>uom</th>
+	   		<th>unit_Price</th>
+	   		<th>brand</th>
+	   		<th>shop_from</th>
         </tr>
-        <#list inventory as task>
+        <#list inventory as inv>
         <tr class="task-row">
-        	<td>${task.id}</td>
-        	<td>${task.InvDate}</td>
+        	<td>${inv.id}</td>
+        	<td>${inv.invDate}</td>
+        	<td>${inv.item}</td>
+        	<td>${inv.price}</td>
+        	<td>${inv.catagory}</td>
+        	<td>${inv.quantity}</td>
+        	<td>${inv.uom}</td>
+        	<td>${inv.unit_Price}</td>
+        	<td>${inv.brand}</td>
+        	<td>${inv.shop_from}</td>
         </tr>
         </#list>
     </table>

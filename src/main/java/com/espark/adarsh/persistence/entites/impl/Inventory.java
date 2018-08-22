@@ -12,117 +12,107 @@ import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
 @Table(name = "inventory_main")
 public final class Inventory extends AbstractEntity<Long>{
 	
-//	@Column(unique = true, length = 24, nullable = false)
-//	private String id;
-	
-	@Column(nullable = true, length = 100)
-	private String InvDate;
-	
-	@Column(nullable = true, length = 100)
-	private String Item;
-	
-	@Column(nullable = true, length = 100)
-	private String Price;
-	
-	@Column(nullable = true, length = 100)
-	private String Catagory;
-	
-	@Column(nullable = true, length = 100)
-	private String Quantity;
-	
-	@Column(nullable = true, length = 100)
-	private String UoM;
-	
-	@Column(nullable = true, length = 100)
-	private String Unit_Price;
-	
-	@Column(nullable = true, length = 100)
-	private String Brand;
-	
-	@Column(nullable = true, length = 100)
-	private String Shop_From;
-	
-	/*public String getid() {
-		return id;
-	}
-
-	public void setid(String id) {
-		this.id = id;
-	}*/
-
 	public String getInvDate() {
-		return InvDate;
+		return invDate;
 	}
 
 	public void setInvDate(String invDate) {
-		InvDate = invDate;
+		this.invDate = invDate;
 	}
 
 	public String getItem() {
-		return Item;
+		return item;
 	}
 
 	public void setItem(String item) {
-		Item = item;
+		this.item = item;
 	}
 
 	public String getPrice() {
-		return Price;
+		return price;
 	}
 
 	public void setPrice(String price) {
-		Price = price;
+		this.price = price;
 	}
 
 	public String getCatagory() {
-		return Catagory;
+		return catagory;
 	}
 
 	public void setCatagory(String catagory) {
-		Catagory = catagory;
+		this.catagory = catagory;
 	}
 
 	public String getQuantity() {
-		return Quantity;
+		return quantity;
 	}
 
 	public void setQuantity(String quantity) {
-		Quantity = quantity;
+		this.quantity = quantity;
 	}
 
-	public String getUoM() {
-		return UoM;
+	public String getUom() {
+		return uom;
 	}
 
-	public void setUoM(String uoM) {
-		UoM = uoM;
+	public void setUom(String uom) {
+		this.uom = uom;
 	}
 
 	public String getUnit_Price() {
-		return Unit_Price;
+		return unit_Price;
 	}
 
 	public void setUnit_Price(String unit_Price) {
-		Unit_Price = unit_Price;
+		this.unit_Price = unit_Price;
 	}
 
 	public String getBrand() {
-		return Brand;
+		return brand;
 	}
 
 	public void setBrand(String brand) {
-		Brand = brand;
+		this.brand = brand;
 	}
 
-	public String getShop_From() {
-		return Shop_From;
+	public String getShop_from() {
+		return shop_from;
 	}
 
-	public void setShop_From(String shop_From) {
-		Shop_From = shop_From;
+	public void setShop_from(String shop_from) {
+		this.shop_from = shop_from;
 	}
+
+	@Column(nullable = false, length = 100)
+	private String invDate;
+
+	@Column(nullable = true, length = 100)
+	private String item;
+	
+	@Column(nullable = true, length = 100)
+	private String price;
+	
+	@Column(nullable = true, length = 100)
+	private String catagory;
+	
+	@Column(nullable = true, length = 100)
+	private String quantity;
+	
+	@Column(nullable = true, length = 100)
+	private String uom;
+	
+	@Column(nullable = true, length = 100)
+	private String unit_Price;
+	
+	@Column(nullable = true, length = 100)
+	private String brand;
+	
+	@Column(nullable = true, length = 100)
+	private String shop_from;
 
 	public Inventory(){
 		super(Inventory.class);
 	}
+	
 }
