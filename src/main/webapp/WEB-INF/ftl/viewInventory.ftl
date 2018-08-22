@@ -32,15 +32,15 @@
     <table class="table table-hover">
         <tr>
 	   		<th>S.No.</th>
-	   		<th>invDate</th>
-	   		<th>item</th>
-	   		<th>price</th>
-	   		<th>catagory</th>
-	   		<th>quantity</th>
-	   		<th>uom</th>
-	   		<th>unit_Price</th>
-	   		<th>brand</th>
-	   		<th>shop_from</th>
+	   		<th>Date</th>
+	   		<th>Item Buy</th>
+	   		<th>Price</th>
+	   		<th>Catagory</th>
+	   		<th>Quantity</th>
+	   		<th>UoM</th>
+	   		<th>Unit Price</th>
+	   		<th>Brand</th>
+	   		<th>Purchase from</th>
         </tr>
         <#list inventory as inv>
         <tr class="task-row">
