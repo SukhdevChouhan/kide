@@ -117,6 +117,11 @@ public final class Inventory extends AbstractEntity<Long>{
 		super(Inventory.class);
 	}
 	
+	public Inventory(String invDate) {
+		this();
+		this.invDate = invDate;
+	}
+	
 	public Inventory(final InventoryCreateForm inventoryCreateForm) {
 		super(Task.class);
 		if (inventoryCreateForm.getId() != null)

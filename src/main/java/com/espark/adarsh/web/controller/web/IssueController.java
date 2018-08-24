@@ -107,5 +107,4 @@ public class IssueController {
 		// ok, redirect
 		return "redirect:/tasks";
 	}
-	// ***********************Task Create ***********************************//
 }

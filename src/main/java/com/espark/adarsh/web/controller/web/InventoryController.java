@@ -95,4 +95,41 @@ public class InventoryController {
 			// ok, redirect
 			return "redirect:/inventory";
 		}
+		// ***********************Task Edit or Update
+		// ***********************************//
+		@RequestMapping(value = "/inventory/edit", method = RequestMethod.GET)
+		public ModelAndView getInventoryEditPage(@RequestParam String inventoryname) {
+			Inventory a = new Inventory(inventoryname);
+			return new ModelAndView("inventoryEdit", "inventory", inventoryManager.getInventoryById(a));
+		}
+
+		// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+		@RequestMapping(value = "/inventory/edit", method = RequestMethod.POST)
+		public String handleTaskEditForm(@Valid @ModelAttribute("inventory") InventoryCreateForm form, BindingResult bindingResult) {
+			System.out.println("******b***********" + form);
+			LOGGER.debug("Processing inventory edit form={}, bindingResult={}", form, bindingResult);
+			if (bindingResult.hasErrors()) {
+				// failed validation
+				System.out.println("******failed validation***********");
+				return "inventoryEditFail";
+			}
+			try {
+				final UserRole userRole = this.userManager.getUserRole(form.getInvDate());
+				form.setRole(userRole);
+				System.out.println("*****userRole*******" + userRole);
+				Inventory inventory = new Inventory(form);
+				this.inventoryManager.updateInventory(inventory);
+			} catch (DataIntegrityViolationException e) {
+				// probably email already exists - very rare case when multiple
+				// admins are adding same user
+				// at the same time and form validation has passed for more than one
+				// of them.
+				System.out.println("In exception block");
+				LOGGER.warn("Exception occurred when trying to edit the inventory, assuming duplicate inventory id", e);
+				bindingResult.reject("email.exists", "Email already exists");
+				return "inventoryEditFail";
+			}
+			// ok, redirect
+			return "redirect:/tasks";
+		}
 }
