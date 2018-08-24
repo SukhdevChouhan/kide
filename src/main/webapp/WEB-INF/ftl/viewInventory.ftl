@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Inventory</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <script src="/js/jquery.min.js"></script>
@@ -29,8 +29,8 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
+        <li><a href="/inventory/create">Create Inventory</a></li>
     </ul>
-    
 </nav>
 
 

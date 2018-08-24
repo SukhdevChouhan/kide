@@ -6,11 +6,40 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.espark.adarsh.bean.InventoryCreateForm;
+import com.espark.adarsh.bean.IssueCreateForm;
 import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
 
 @Entity
 @Table(name = "inventory_main")
 public final class Inventory extends AbstractEntity<Long>{
+	
+	@Column(nullable = false, length = 100)
+	private String invDate;
+
+	@Column(nullable = true, length = 100)
+	private String item;
+	
+	@Column(nullable = true, length = 100)
+	private String price;
+	
+	@Column(nullable = true, length = 100)
+	private String catagory;
+	
+	@Column(nullable = true, length = 100)
+	private String quantity;
+	
+	@Column(nullable = true, length = 100)
+	private String uom;
+	
+	@Column(nullable = true, length = 100)
+	private String unit_Price;
+	
+	@Column(nullable = true, length = 100)
+	private String brand;
+	
+	@Column(nullable = true, length = 100)
+	private String shop_from;
 	
 	public String getInvDate() {
 		return invDate;
@@ -84,35 +113,23 @@ public final class Inventory extends AbstractEntity<Long>{
 		this.shop_from = shop_from;
 	}
 
-	@Column(nullable = false, length = 100)
-	private String invDate;
-
-	@Column(nullable = true, length = 100)
-	private String item;
-	
-	@Column(nullable = true, length = 100)
-	private String price;
-	
-	@Column(nullable = true, length = 100)
-	private String catagory;
-	
-	@Column(nullable = true, length = 100)
-	private String quantity;
-	
-	@Column(nullable = true, length = 100)
-	private String uom;
-	
-	@Column(nullable = true, length = 100)
-	private String unit_Price;
-	
-	@Column(nullable = true, length = 100)
-	private String brand;
-	
-	@Column(nullable = true, length = 100)
-	private String shop_from;
-
 	public Inventory(){
 		super(Inventory.class);
+	}
+	
+	public Inventory(final InventoryCreateForm inventoryCreateForm) {
+		super(Task.class);
+		if (inventoryCreateForm.getId() != null)
+			this.setId(inventoryCreateForm.getId());
+		this.invDate = inventoryCreateForm.getInvDate();
+		this.item = inventoryCreateForm.getItem();
+		this.price = inventoryCreateForm.getPrice();
+		this.catagory = inventoryCreateForm.getCatagory();
+		this.quantity = inventoryCreateForm.getQuantity();
+		this.uom = inventoryCreateForm.getUom();
+		this.unit_Price = inventoryCreateForm.getUnit_Price();
+		this.brand = inventoryCreateForm.getBrand();
+		this.shop_from = inventoryCreateForm.getShop_from();
 	}
 	
 }

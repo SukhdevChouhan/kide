@@ -33,7 +33,43 @@ public class InventoryRepositoryImpl<E> extends AbstractRepository<Inventory> im
 	}
 	
 	@Override
-	public void refreshTask(Inventory inventory) {
+	public Boolean saveInventory(Inventory inventory) {
+		super.put(inventory);
+		return null;
+	}
+	
+	@Override
+	public Inventory getInventory(Inventory inventory) {
+		return getUniqueByExample(inventory);
+	}
+	
+	@Override
+	@Transactional
+	public Inventory getInventoryById(Inventory inventory) {
+		return (Inventory) super.getEntityById(inventory);
+	}
+	
+	@Override
+	@Transactional
+	public Inventory getInventoryByName(Inventory inventory) {
+		return (Inventory) super.getByColumnName("issue_date", inventory.getInvDate());
+	}
+	
+	@Override
+	public Boolean deleteInventory(Inventory inventory) {
+		super.remove(inventory);
+		return null;
+	}
+	
+	@Override
+	public Boolean updateInventory(Inventory inventory) {
+		super.update(inventory);
+		return null;
+	}
+	
+	@Override
+	public void refreshInventory(Inventory inventory) {
 		super.refresh(inventory);
 	}
+
 }

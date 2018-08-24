@@ -7,8 +7,41 @@ import javax.validation.constraints.NotNull;
 
 public class IssueCreateForm {
 
+	private Long id;
+	
 	@NotEmpty
 	private String issue_name = "test3";
+
+	private String issue_report_date = "";
+
+	private String issue_update_date = "";
+
+	private String issue_heading = "";
+
+	private String issue_description = "";
+
+	private String issue_status = "";
+
+	private String issue_linked_with = "";
+
+	private String issue_comments = "";
+
+	private String issue_others = "";
+
+	private String issue_closed = "";
+
+	@NotNull
+	private String issue_type = "";
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 	public String getIssue_name() {
 		return issue_name;
@@ -97,38 +130,7 @@ public class IssueCreateForm {
 	public void setIssue_type(String issue_type) {
 		this.issue_type = issue_type;
 	}
-
-	private String issue_report_date = "";
-
-	private String issue_update_date = "";
-
-	private String issue_heading = "";
-
-	private String issue_description = "";
-
-	private String issue_status = "";
-
-	private String issue_linked_with = "";
-
-	private String issue_comments = "";
-
-	private String issue_others = "";
-
-	private String issue_closed = "";
-
-	@NotNull
-	private String issue_type = "";
-
-	private Long id;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	private UserRole userRole;
 
 	public void setRole(UserRole userRole) {
