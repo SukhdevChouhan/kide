@@ -12,6 +12,12 @@
     
     <script>
     	$(document).ready(function (){
+  		$("#myInput").on("keyup", function() {
+    	var value = $(this).val().toLowerCase();
+    	$("#myTable tr").filter(function() {
+      	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
     		$(".task-row").click(function(){
     			window.location=$(this).data("url");
     		});
@@ -30,6 +36,8 @@
 <div class="container">
     <h2>Task Information </h2>
     <p>task data for analysis </p>
+    <input id="myInput" type="text" placeholder="Search..">
+	<br><br>
     <table class="table table-hover">
         <tr>
 	   		<th>Task Id</th>
@@ -45,6 +53,8 @@
             <th>Other details</th>
             <th>Comments</th>
         </tr>
+         </thead>
+        <tbody id="myTable">
         <#list tasks as task>
         <tr class="task-row" data-url="/task/edit?taskname=${task.issue_name}">
         	<td>${task.id}</td>
@@ -61,6 +71,7 @@
             <td>${task.issue_comments}</td>
         </tr>
         </#list>
+        </tbody>
     </table>
 </div>
 <div id="navigate"></div>
