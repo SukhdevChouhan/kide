@@ -69,7 +69,7 @@ public class InventoryManagerImpl implements InventoryManager{
 	}
 
 	@Override
-	public Inventory getInventoryByName(Inventory inventory) {
-		return inventoryRepository.getInventoryByName(inventory);
+	public Inventory getInventoryByInventory_uiid(Inventory inventory) {
+		return inventoryRepository.getInventoryByInventory_uiid(inventory);
 	}
 }

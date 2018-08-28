@@ -14,7 +14,10 @@ import com.espark.adarsh.persistence.entites.construct.AbstractEntity;
 @Table(name = "inventory_main")
 public final class Inventory extends AbstractEntity<Long>{
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = true, length = 100)
+	private String inventory_uiid;
+	
+	@Column(nullable = true, length = 100)
 	private String invDate;
 
 	@Column(nullable = true, length = 100)
@@ -48,6 +51,15 @@ public final class Inventory extends AbstractEntity<Long>{
 	public void setInvDate(String invDate) {
 		this.invDate = invDate;
 	}
+	
+	public String getInventory_uiid() {
+		return inventory_uiid;
+	}
+
+	public void setInventory_uiid(String inventory_uiid) {
+		this.inventory_uiid = inventory_uiid;
+	}
+
 
 	public String getItem() {
 		return item;
@@ -117,16 +129,36 @@ public final class Inventory extends AbstractEntity<Long>{
 		super(Inventory.class);
 	}
 	
-	public Inventory(String invDate) {
+	public Inventory(Long id) {
+		super(Inventory.class);
+		super.setId(id);
+		this.setInventory_uiid("");
+	}
+	
+	public Inventory(String inventory_uiid) {
 		this();
-		this.invDate = invDate;
+		this.inventory_uiid = inventory_uiid;
+	}
+	
+	public Inventory(Inventory inventory) {
+		super(Task.class);
+		this.inventory_uiid = inventory.getInventory_uiid();
+		this.invDate = inventory.getInvDate();
+		this.item = inventory.getItem();
+		this.price = inventory.getPrice();
+		this.catagory = inventory.getCatagory();
+		this.quantity = inventory.getQuantity();
+		this.uom = inventory.getUom();
+		this.unit_Price = inventory.getUnit_Price();
+		this.brand = inventory.getBrand();
+		this.shop_from = inventory.getShop_from();
 	}
 	
 	public Inventory(final InventoryCreateForm inventoryCreateForm) {
 		super(Task.class);
-		if (inventoryCreateForm.getId() != null)
-			this.setId(inventoryCreateForm.getId());
+		this.setId(inventoryCreateForm.getId());
 		this.invDate = inventoryCreateForm.getInvDate();
+		this.inventory_uiid = inventoryCreateForm.getInventory_uiid();
 		this.item = inventoryCreateForm.getItem();
 		this.price = inventoryCreateForm.getPrice();
 		this.catagory = inventoryCreateForm.getCatagory();

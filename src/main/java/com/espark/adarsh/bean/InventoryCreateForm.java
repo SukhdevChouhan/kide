@@ -1,19 +1,25 @@
 package com.espark.adarsh.bean;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
+
 import com.espark.adarsh.persistence.entites.impl.UserRole;
 
 public class InventoryCreateForm {
 
 	private Long id;
-	private String invDate;
-	private String item;
-	private String price;
-	private String catagory;
-	private String quantity;
-	private String uom;
-	private String unit_Price;
-	private String brand;
-	private String shop_from;
+	private String invDate="";
+	private String inventory_uiid="";
+	private String item="";
+	private String price="";
+	private String catagory="";
+	private String quantity="";
+	private String uom="";
+	private String unit_Price="";
+	private String brand="";
+	private String shop_from="";
 	
 	public Long getId() {
 		return id;
@@ -26,6 +32,18 @@ public class InventoryCreateForm {
 	}
 	public void setInvDate(String invDate) {
 		this.invDate = invDate;
+	}
+	public UserRole getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+	public String getInventory_uiid() {
+		return inventory_uiid;
+	}
+	public void setInventory_uiid(String inventory_uiid) {
+		this.inventory_uiid = inventory_uiid;
 	}
 	public String getItem() {
 		return item;
@@ -83,6 +101,20 @@ public class InventoryCreateForm {
 
 	public UserRole getRole() {
 		return userRole;
+	}
+	public String setCurrentDateUiid(){
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+		LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+		String str = dtf.format(now);
+		return str+"xxxxx";
+	}
+	public String setCurrentDateInv(){
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+		String str = dtf.format(now);
+		return str;
 	}
 	
 }

@@ -13,6 +13,6 @@ public interface InventoryRepository<T> {
 	public Boolean deleteInventory(Inventory inventory);
 	public Inventory getInventory(Inventory inventory);
 	public Inventory getInventoryById(Inventory inventory);
-	public Inventory getInventoryByName(Inventory inventory);
+	public Inventory getInventoryByInventory_uiid(Inventory inventory);
 	
 }

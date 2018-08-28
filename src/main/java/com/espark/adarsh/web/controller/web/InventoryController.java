@@ -95,17 +95,17 @@ public class InventoryController {
 			// ok, redirect
 			return "redirect:/inventory";
 		}
-		// ***********************Task Edit or Update
+		// ***********************Inventory Edit or Update
 		// ***********************************//
 		@RequestMapping(value = "/inventory/edit", method = RequestMethod.GET)
-		public ModelAndView getInventoryEditPage(@RequestParam String inventoryname) {
-			Inventory a = new Inventory(inventoryname);
-			return new ModelAndView("inventoryEdit", "inventory", inventoryManager.getInventoryById(a));
+		public ModelAndView getInventoryEditPage(@RequestParam String inventory_uiid) {
+			Inventory a = new Inventory(inventory_uiid);
+			return new ModelAndView("inventoryEdit", "inventory", inventoryManager.getInventoryByInventory_uiid(a));
 		}
 
 		// @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 		@RequestMapping(value = "/inventory/edit", method = RequestMethod.POST)
-		public String handleTaskEditForm(@Valid @ModelAttribute("inventory") InventoryCreateForm form, BindingResult bindingResult) {
+		public String handleInventoryEditForm(@Valid @ModelAttribute("form") InventoryCreateForm form, BindingResult bindingResult) {
 			System.out.println("******b***********" + form);
 			LOGGER.debug("Processing inventory edit form={}, bindingResult={}", form, bindingResult);
 			if (bindingResult.hasErrors()) {
@@ -114,7 +114,7 @@ public class InventoryController {
 				return "inventoryEditFail";
 			}
 			try {
-				final UserRole userRole = this.userManager.getUserRole(form.getInvDate());
+				final UserRole userRole = this.userManager.getUserRole(form.getInventory_uiid());
 				form.setRole(userRole);
 				System.out.println("*****userRole*******" + userRole);
 				Inventory inventory = new Inventory(form);
@@ -130,6 +130,6 @@ public class InventoryController {
 				return "inventoryEditFail";
 			}
 			// ok, redirect
-			return "redirect:/tasks";
+			return "redirect:/inventory";
 		}
 }

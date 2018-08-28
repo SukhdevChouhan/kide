@@ -14,10 +14,10 @@
     <script>
     	$(document).ready(function(){
   		$("#myInput").on("keyup", function() {
-    	var value = $(this).val().toLowerCase();
-    	$("#myTable tr").filter(function() {
-      	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-	    });
+    		var value = $(this).val().toLowerCase();
+    		$("#myTable tr").filter(function() {
+      			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    	});
 	  });
 	  $(".inventory-row").click(function(){
     			window.location=$(this).data("url");
@@ -44,6 +44,7 @@
         <tr>
 	   		<th>S.No.</th>
 	   		<th>Date</th>
+	   		<th>Uiid</th>
 	   		<th>Item Buy</th>
 	   		<th>Price</th>
 	   		<th>Catagory</th>
@@ -55,18 +56,19 @@
         </tr>
         </thead>
         <tbody id="myTable">
-        <#list inventory as inv>
-        <tr class="inventory-row">
-        	<td>${inv.id}</td>
-        	<td>${inv.invDate}</td>
-        	<td>${inv.item}</td>
-        	<td>${inv.price}</td>
-        	<td>${inv.catagory}</td>
-        	<td>${inv.quantity}</td>
-        	<td>${inv.uom}</td>
-        	<td>${inv.unit_Price}</td>
-        	<td>${inv.brand}</td>
-        	<td>${inv.shop_from}</td>
+        <#list inventory as inventory>
+        <tr class="inventory-row" data-url="/inventory/edit?inventory_uiid=${inventory.inventory_uiid}">
+        	<td>${inventory.id}</td>
+        	<td>${inventory.invDate}</td>
+        	<td>${inventory.inventory_uiid}</td>
+        	<td>${inventory.item}</td>
+        	<td>${inventory.price}</td>
+        	<td>${inventory.catagory}</td>
+        	<td>${inventory.quantity}</td>
+        	<td>${inventory.uom}</td>
+        	<td>${inventory.unit_Price}</td>
+        	<td>${inventory.brand}</td>
+        	<td>${inventory.shop_from}</td>
         </tr>
         </#list>
         </tbody>

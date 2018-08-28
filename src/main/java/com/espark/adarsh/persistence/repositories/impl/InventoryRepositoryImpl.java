@@ -51,8 +51,8 @@ public class InventoryRepositoryImpl<E> extends AbstractRepository<Inventory> im
 	
 	@Override
 	@Transactional
-	public Inventory getInventoryByName(Inventory inventory) {
-		return (Inventory) super.getByColumnName("issue_date", inventory.getInvDate());
+	public Inventory getInventoryByInventory_uiid(Inventory inventory) {
+		return (Inventory) super.getByColumnName("inventory_uiid", inventory.getInventory_uiid());
 	}
 	
 	@Override

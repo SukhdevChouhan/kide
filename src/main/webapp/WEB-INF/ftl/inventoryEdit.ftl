@@ -4,51 +4,48 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-</head>
+<head>Edit Inventory</head>
 <body>
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/inventory">My Inventories</a></li>
     </ul>
 </nav>
 
 <div class="container">
     <div class="jumbotron">
-        <center>   <h3>INVENTORY CREATION FORM</h3></center>
     </div>
     <form role="form" name="form" action="" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <div>
+   		
+    	 <div>
+            <label for="id">inventory id</label>
+            <input type="number" class="form-control" name="id" id="id" value="${inventory.id}" readonly="readonly"/>
+        </div>
+    	 <div>
             <label for="invDate">Inventory Date</label>
-            <input type="text" class="form-control" name="invDate" id="invDate" 
-                    autofocus placeholder="purchase date" value="${createInv.setCurrentDateInv()}"/>
+            <input type="text" class="form-control" name="invDate" id="invDate" value="${inventory.invDate}"/>
         </div>
-         <div>
-            <label for="inventory_uiid">Inventory uiid</label>
-            <input type="text" class="form-control" name="inventory_uiid" id="inventory_uiid" 
-                    autofocus placeholder="ddmmyyyyxxxxx" value="${createInv.setCurrentDateUiid()}"/>
-        </div>
+        
         <div>
             <label for="item">Item Buy</label>
-            <input type="text" name="item" id="item"  placeholder="item Buy"/>
+            <input type="text" name="item" id="item"  value="${inventory.item}"/>
         </div>
         
         <div>
             <label for="price">Item total Price</label>
-            <input type="text" name="price" id="price" 
-                   autofocus placeholder="Item total Price"/>
+            <input type="text" name="price" id="price" value="${inventory.price}"/>
         </div>
         
         <div>
             <label for="quantity">quantity</label>
-            <input type="text" name="quantity" id="quantity"  autofocus placeholder="quantity"/>
+            <input type="text" name="quantity" id="quantity"  value="${inventory.quantity}"/>
         </div>
         
         <div>
             <label for="uom">Unit of measurement</label>
             <select name="uom" id="uom">
+            <option value = "${inventory.uom}">${inventory.uom}</option>
             <option value = "notapplicable">NA</option>
             <option value = "no_of_pieces">no. of pieces</option>
             <option value = "kilograms">kg</option>
@@ -63,6 +60,7 @@
         <div>
             <label for="catagory">Item catagory</label>
             <select name="catagory" id="catagory">
+            <option value = "${inventory.catagory}">${inventory.catagory}</option>
             <option value = "Household">Household</option>
             <option value = "Maintainance">Maintainance</option>
             <option value = "Snacks">Hotel and Snacks</option>
@@ -83,17 +81,17 @@
         
 		<div>
             <label for="unit_Price">unit Price</label>
-            <input type="text"  name="unit_Price" id="unit_Price"  placeholder="unit Price"/>
+            <input type="text"  name="unit_Price" id="unit_Price"  value="${inventory.unit_Price}"/>
         </div>
         
         <div>
             <label for="brand">brand if any</label>
-            <input type="text"  name="brand" id="brand" placeholder="brand if any"/>
+            <input type="text"  name="brand" id="brand" value="${inventory.brand}"/>
         </div>
         
          <div>
             <label for="shop_from">purchase from</label>
-            <input type="text"  name="shop_from" id="shop_from" placeholder="purchase from"/>
+            <input type="text"  name="shop_from" id="shop_from" value="${inventory.shop_from}"/>
         </div>
 
         <button type="submit">Save</button>

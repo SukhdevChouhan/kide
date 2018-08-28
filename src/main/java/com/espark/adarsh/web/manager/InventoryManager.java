@@ -11,6 +11,6 @@ public interface InventoryManager<M> {
 	public Boolean deleteInventory(Inventory inventory);
 	public Inventory getInventory(Inventory inventory);
 	public Inventory getInventoryById(Inventory inventory);
-	public Inventory getInventoryByName(Inventory inventory);
+	public Inventory getInventoryByInventory_uiid(Inventory inventory);
 	public Collection<Inventory> getAllInventory();
 }
