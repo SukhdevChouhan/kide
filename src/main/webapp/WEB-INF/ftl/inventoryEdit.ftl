@@ -22,6 +22,7 @@
             <label for="id">inventory id</label>
             <input type="number" class="form-control" name="id" id="id" value="${inventory.id}" readonly="readonly"/>
         </div>
+        
     	 <div>
             <label for="invDate">Inventory Date</label>
             <input type="text" class="form-control" name="invDate" id="invDate" value="${inventory.invDate}"/>
