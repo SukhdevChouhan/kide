@@ -103,14 +103,14 @@ public class InventoryCreateForm {
 		return userRole;
 	}
 	public String setCurrentDateUiid(){
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyyHHmmssSSS");
 		LocalDateTime now = LocalDateTime.now();
         System.out.println(dtf.format(now));
 		String str = dtf.format(now);
-		return str+"xxxxx";
+		return str;
 	}
 	public String setCurrentDateInv(){
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
 		LocalDateTime now = LocalDateTime.now();
         System.out.println(dtf.format(now));
 		String str = dtf.format(now);
