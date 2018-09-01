@@ -37,7 +37,7 @@
 <div class="container">
     <h2>Inventory Information </h2>
     <p>Items data for analysis </p>
-	<input id="myInput" type="text" placeholder="Search..">
+	<input id="myInput" type="text" placeholder="Search.." autofocus>
 	<br><br>
     <table class="table table-hover">
         <thead>

@@ -1,0 +1,123 @@
+CREATE TABLE public.issue_main (
+	issue_id varchar(100) NOT NULL,
+	issue_name varchar(100) NOT NULL,
+	issue_report_date varchar(100) NOT NULL,
+	issue_update_date varchar(100) NULL,
+	issue_heading varchar(100) NULL,
+	issue_description varchar(100) NULL,
+	issue_status varchar(100) NULL,
+	issue_linked_with varchar(100) NULL,
+	issue_comments varchar(100) NULL,
+	issue_others varchar(100) NULL,
+	issue_closed varchar(100) NULL,
+	issue_type varchar(100) NOT NULL,
+	CONSTRAINT issuemain_pk PRIMARY KEY (issue_id),
+	CONSTRAINT issuemain_issue_status_fk FOREIGN KEY (issue_status) REFERENCES public.issue_status(issue_status),
+	CONSTRAINT issuemain_issuetype_fk FOREIGN KEY (issue_type) REFERENCES public.issue_type(issue_type)
+)
+WITH (
+	OIDS=FALSE
+);
+
+
+
+CREATE TABLE public.issue_type (
+	issue_type_sno varchar(100) NOT NULL,
+	issue_type_name varchar(100) NOT NULL,
+	issue_type varchar(100) NOT NULL,
+	CONSTRAINT issuetype_pk PRIMARY KEY (issue_type)
+)
+WITH (
+	OIDS=FALSE
+);
+
+
+CREATE TABLE public.issue_status (
+	issue_status_id varchar(100) NOT NULL,
+	issue_status_name varchar(100) NOT NULL,
+	issue_status varchar(100) NOT NULL,
+	CONSTRAINT issue_status_pk PRIMARY KEY (issue_status)
+)
+WITH (
+	OIDS=FALSE
+);
+
+CREATE TABLE public.issue_comment_details (
+	comment_id int4 NOT NULL DEFAULT nextval('issue_comment_details_comment_id_seq'::regclass),
+	comment_date varchar(100) NULL,
+	comments_details varchar(100) NULL,
+	issue_id varchar(100) NOT NULL,
+	CONSTRAINT issue_comment_details_pk PRIMARY KEY (comment_id)
+)
+WITH (
+	OIDS=FALSE
+);
+
+---------------------------------------------
+
+CREATE TABLE kida.inventory_main (id bigint(20) primary key
+NOT NULL, 
+InvDate VARCHAR(50) DEFAULT NULL, 
+Item VARCHAR(50) DEFAULT NULL,
+Inventory_uiid varchar(50) DEFAULT NULL,
+Price VARCHAR(50) DEFAULT NULL,
+Catagory VARCHAR(50) DEFAULT NULL,
+Quantity VARCHAR(50) DEFAULT NULL,
+UoM VARCHAR(50) DEFAULT NULL,
+Unit_Price VARCHAR(50) DEFAULT NULL,
+Brand VARCHAR(50) DEFAULT NULL,
+Shop_From VARCHAR(50) DEFAULT NULL);
+
+ALTER TABLE kida.inventory_main MODIFY COLUMN id bigint(20) NOT NULL AUTO_INCREMENT;
+-----------------------------------------
+
+INSERT INTO kida.issue_status (issue_status_id,issue_status_name,issue_status) VALUES (
+'1','submitted','101');
+INSERT INTO kida.issue_status (issue_status_id,issue_status_name,issue_status) VALUES (
+'2','active','102');
+INSERT INTO kida.issue_status (issue_status_id,issue_status_name,issue_status) VALUES (
+'3','completed','103');
+INSERT INTO kida.issue_status (issue_status_id,issue_status_name,issue_status) VALUES (
+'4','defer','104');
+INSERT INTO kida.issue_status (issue_status_id,issue_status_name,issue_status) VALUES (
+'5','working_as_designed','105');
+
+
+INSERT INTO public.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'1','epic','101');
+INSERT INTO kida.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'2','story','102');
+INSERT INTO kida.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'3','sub_story','103');
+INSERT INTO kida.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'4','task','104');
+INSERT INTO kida.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'5','sub_task','105');
+INSERT INTO kida.issue_type (issue_type_sno,issue_type_name,issue_type) VALUES (
+'6','bug','106');
+
+
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'1','epic','101');
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'2','story','102');
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'3','sub_story','103');
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'4','task','104');
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'5','sub_task','105');
+INSERT INTO public.issuetype (issue_type_sno,issue_type_name,issue_type) VALUES (
+'6','bug','106');
+
+
+INSERT INTO public.issue_comment_details (comment_id,comment_date,comments_details,issue_comments) VALUES (
+'1','8-NOV-2016','tried with different combination but not successed','com1002');
+INSERT INTO public.issue_comment_details (comment_id,comment_date,comments_details,issue_comments) VALUES (
+'2','','','com1001');
+INSERT INTO public.issue_comment_details (comment_id,comment_date,comments_details,issue_comments) VALUES (
+'3','','','com1003');
+
+
+1-Jul-18	Milk	60	1.5	Liters	milk and Dairy	na	na	na
+

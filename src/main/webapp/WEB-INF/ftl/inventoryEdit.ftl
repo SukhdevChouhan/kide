@@ -62,26 +62,31 @@
             <label for="catagory">Item catagory</label>
             <select name="catagory" id="catagory">
             <option value = "${inventory.catagory}">${inventory.catagory}</option>
-            <option value = "Household">Household</option>
+            <option value = "dairy">milk and Dairy</option>
+            <option value = "vegetables">vegetables and fruits</option>
+            <option value = "Grocessories">pulses and Grocessories</option>
+            <option value = "alcohol">Alcohol</option>
+            <option value = "household">Household items</option>
             <option value = "Maintainance">Maintainance</option>
             <option value = "Snacks">Hotel and Snacks</option>
-            <option value = "basicFood">Milk, dairy,fruits and Vegetables</option>
-            <option value = "Office">Office activities</option>
-            <option value = "Travel">Travel and tour</option>
-            <option value = "Clothings">Clothings</option>
-            <option value = "Medical">Medical</option>
             <option value = "Studies">Studies</option>
-            <option value = "Premium">Premium</option>
+            <option value = "Office">Office activities</option>
             <option value = "Bike">Bike</option>
+            <option value = "Travel">Travelling</option>
+            <option value = "Clothings">Clothings</option>
+            <option value = "Health">fitness and health</option>
+            <option value = "cosmatics">beauty and cosmatics</option>
+            <option value = "Medical">Medicines and hospital</option>
+            <option value = "Premium">Premium</option>
             <option value = "leisure">leisure</option>
-            <option value = "Health">Health</option>
             <option value = "other">other surpresis</option>
+            <option value = "hobby">Hobbies</option>
             <option value = "charity_lost_stolen_forget">charity or lost or stolen or forget</option>
          </select>
         </div>
         
 		<div>
-            <label for="unit_Price">unit Price</label>
+            <label for="unit_Price">unit/MRP Price</label>
             <input type="text"  name="unit_Price" id="unit_Price"  value="${inventory.unit_Price}"/>
         </div>
         
