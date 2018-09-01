@@ -46,6 +46,13 @@
             <input type="text" name="quantity" id="quantity"  autofocus placeholder="quantity"/>
         </div>
         
+        
+        
+        <#-- <div>
+            <label for="uom">Unit of measurement</label>
+            <input type="text" name="uom" id="uom"  autofocus placeholder="uom"/>
+        </div> -->
+        
         <div>
             <label for="uom">Unit of measurement</label>
             <select name="uom" id="uom">
@@ -58,7 +65,12 @@
             <option value = "pounds">pounds</option>
             <option value = "others">others</option>
             </select>
-        </div>
+        </div> 
+        
+       <#--  <div>
+            <label for="catagory">Item catagory</label>
+            <input type="text" name="catagory" id="catagory"  autofocus placeholder="catagory"/>
+        </div> -->
         
         <div>
             <label for="catagory">Item catagory</label>
@@ -79,7 +91,7 @@
             <option value = "other">other surpresis</option>
             <option value = "charity_lost_stolen_forget">charity or lost or stolen or forget</option>
          </select>
-        </div>
+        </div> 
         
 		<div>
             <label for="unit_Price">unit Price</label>
