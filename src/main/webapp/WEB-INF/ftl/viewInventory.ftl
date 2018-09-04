@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>	
+	<center><b>View Inventory</b></center>
+	 <a href="/inventory/create">Create Inventory</a>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<style type="text/css" class="init"></style>
 	
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" class="init">
@@ -14,17 +16,18 @@
     			});
 			
 			$('#myTable').DataTable( {
-				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+				"lengthMenu": [[9, 25, 50, -1], [9, 25, 50, "All"]]
 				});
 			});
 			
 	</script>
+	<style>body{background-color:#d3ffd8}</style>
 </head>
 	
 	<body>
 	<div>
 			<div>			
-				<table id="myTable">
+				<table id="myTable" class="display" style="width:100%">
 					<thead>
 						<tr>
 							<th>S.No.</th>
@@ -59,19 +62,6 @@
 					</tbody>
 				</table>
 			</div>	
-			</div>		
-		<style>
-table, th , td  {
-  border: 1px solid grey;
-  border-collapse: collapse;
-  padding: 5px;
-}
-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
-}
-table tr:nth-child(even) {
-  background-color: #ffffff;
-}
-</style>	
+		</div>		
 	</body>
 </html>
