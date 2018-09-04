@@ -16,8 +16,12 @@
     			});
 			
 			$('#myTable').DataTable( {
-				"lengthMenu": [[9, 25, 50, -1], [9, 25, 50, "All"]]
+				"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+				 "order": [[ 0, 'desc' ]]
 				});
+			
+				
+				
 			});
 			
 	</script>
