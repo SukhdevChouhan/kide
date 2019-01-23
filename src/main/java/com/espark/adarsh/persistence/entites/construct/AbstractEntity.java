@@ -1,7 +1,10 @@
 package com.espark.adarsh.persistence.entites.construct;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 @MappedSuperclass
 public abstract class AbstractEntity<E extends Serializable> implements Entity<E> {
@@ -18,6 +21,20 @@ public abstract class AbstractEntity<E extends Serializable> implements Entity<E
 
 	@Override
 	public E getId() {
+		if(id.toString().contains(",")){
+			try {
+				id=(E) NumberFormat.getNumberInstance(java.util.Locale.US).parse((String) id);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Error while getting parsing Id : "+id);
+				e.printStackTrace();
+			}
+//			String id1 = id.toString();
+//			int id2=id1.indexOf(",");
+//			String[] s1= id1.split(",");
+//			String s2=s1[0]+""+s1[1];
+//			id=Integer.parseInt(s2);
+		}
 		return id;
 	}
 

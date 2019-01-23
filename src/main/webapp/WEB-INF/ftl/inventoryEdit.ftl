@@ -4,7 +4,19 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>Edit Inventory</head>
+<head>Edit Inventory for ${inventory.id}
+<style> 
+input[type=text] {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #3CBC8D;
+  color: white;
+}
+</style>
+</head>
 <body>
 <nav role="navigation">
     <ul>
@@ -15,12 +27,12 @@
 <div class="container">
     <div class="jumbotron">
     </div>
-    <form role="form" name="form" action="" method="post">
+    <form role="form" name="form" action="" method="post" >
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
    		
     	 <div>
             <label for="id">inventory id</label>
-            <input type="number" class="form-control" name="id" id="id" value="${inventory.id}" readonly="readonly"/>
+            <input type="number" class="form-control" name="id" id="id" value="${inventory.id}"/>
         </div>
         
     	 <div>
