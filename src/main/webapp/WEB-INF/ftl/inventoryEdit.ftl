@@ -4,16 +4,36 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>Edit Inventory for ${inventory.id}
+<head>Edit Inventory <!-- for ${inventory.id?long?c} -->
 <style> 
-input[type=text] {
-  width: 10%;
-  padding: 12px 20px;
+input[type=text], select {
+  width: 100%;
+  padding: 1px 2px;
   margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 0px;
   box-sizing: border-box;
-  border: none;
-  background-color: #3CBC8D;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
   color: white;
+  margin: 0px 0;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 0px;
 }
 </style>
 </head>
@@ -32,7 +52,7 @@ input[type=text] {
    		
     	 <div>
             <label for="id">inventory id</label>
-            <input type="number" class="form-control" name="id" id="id" value="${inventory.id}"/>
+            <input type="number" class="form-control" name="id" id="id" value="${inventory.id?long?c}" readonly	/>
         </div>
         
     	 <div>

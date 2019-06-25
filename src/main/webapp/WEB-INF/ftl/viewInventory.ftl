@@ -2,6 +2,7 @@
 <html>
 <head>	
 	<center><b>View Inventory</b></center>
+	<a href="/">Home</a></t>
 	 <a href="/inventory/create">Create Inventory</a>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	<style type="text/css" class="init"></style>
@@ -25,7 +26,7 @@
 			});
 			
 	</script>
-	<style>body{background-color:#d3ffd8}</style>
+	<style>body{background-color:#e6ecff}</style>
 </head>
 	
 	<body>
