@@ -11,7 +11,7 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/task/create">Create Task</a></li>
-        <li><a href="/tasks">Tasks</a></li>
+        <li><a href="/tasks">Edit Tasks</a></li>
     </ul>
 </nav>
 
