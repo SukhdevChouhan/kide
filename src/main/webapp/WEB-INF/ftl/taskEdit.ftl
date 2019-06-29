@@ -20,10 +20,9 @@
     </div>
     <form role="form" name="editTask" action="" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    id : <input type="number" type="hidden" name="id" id="id" value="${task.id}"/>
     	 <div>
             <label for="id">Issue id</label>
-            <input type="id" class="form-control" name="id" id="id" value="${task.id}"/>
+            <input type="id" class="form-control" name="id" id="id" value="${task.id?long?c}"/>
         </div>
         <div>
             <label for="issue_name">Issue Name</label>
