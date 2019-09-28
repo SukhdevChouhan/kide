@@ -121,3 +121,6 @@ INSERT INTO public.issue_comment_details (comment_id,comment_date,comments_detai
 
 1-Jul-18	Milk	60	1.5	Liters	milk and Dairy	na	na	na
 
+ALTER TABLE inventory_main CHANGE COLUMN Inventory_uiid inventory_uiid varchar(100);
+select inventory_uiid, COUNT(inventory_uiid) FROM inventory_main GROUP BY inventory_uiid HAVING COUNT(inventory_uiid) > 1
+
